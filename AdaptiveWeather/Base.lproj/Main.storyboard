@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AdaptiveWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="6Zm-lG-6AT">
+                                <rect key="frame" x="150" y="20" width="300" height="197"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nmx-UP-3mW" userLabel="TextContainer">
+                                <rect key="frame" x="0.0" y="237" width="600" height="363"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cupertino" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Emw-F7-Qdm">
+                                        <rect key="frame" x="0.0" y="10" width="600" height="177"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="150"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="90"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Br2-Hd-hnl">
+                                        <rect key="frame" x="0.0" y="58" width="600" height="295"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="250"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="150"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21568627450980393" green="0.50196078431372548" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Br2-Hd-hnl" firstAttribute="width" secondItem="Nmx-UP-3mW" secondAttribute="width" id="Ah5-Xy-nPI"/>
+                                    <constraint firstItem="Emw-F7-Qdm" firstAttribute="width" secondItem="Nmx-UP-3mW" secondAttribute="width" id="JG4-Jc-4Zq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Br2-Hd-hnl" secondAttribute="bottom" constant="10" id="Rak-JD-CAG"/>
+                                    <constraint firstItem="Emw-F7-Qdm" firstAttribute="top" secondItem="Nmx-UP-3mW" secondAttribute="top" constant="10" id="WQR-5p-uIf"/>
+                                    <constraint firstItem="Emw-F7-Qdm" firstAttribute="centerX" secondItem="Nmx-UP-3mW" secondAttribute="centerX" id="chO-LQ-e2a"/>
+                                    <constraint firstItem="Br2-Hd-hnl" firstAttribute="centerX" secondItem="Nmx-UP-3mW" secondAttribute="centerX" id="ys5-Eu-ECc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29019607843137252" green="0.6705882352941176" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nmx-UP-3mW" secondAttribute="bottom" id="4Nc-9V-czx"/>
+                            <constraint firstItem="Nmx-UP-3mW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9QS-eI-tTL"/>
+                            <constraint firstItem="6Zm-lG-6AT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Bmh-aM-lZT"/>
+                            <constraint firstItem="Nmx-UP-3mW" firstAttribute="top" secondItem="6Zm-lG-6AT" secondAttribute="bottom" constant="20" id="CUu-Cf-gY0"/>
+                            <constraint firstAttribute="trailing" secondItem="Nmx-UP-3mW" secondAttribute="trailing" id="FhT-Ld-Nf8"/>
+                            <constraint firstItem="Nmx-UP-3mW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="180" id="J9r-nm-vRD">
+                                <variation key="heightClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="6Zm-lG-6AT" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="Jl9-ad-i7d"/>
+                            <constraint firstItem="6Zm-lG-6AT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XSk-Eu-GW1"/>
+                            <constraint firstItem="6Zm-lG-6AT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZVx-dD-Qnr"/>
+                            <constraint firstItem="6Zm-lG-6AT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="bd1-x4-o1V"/>
+                            <constraint firstItem="Nmx-UP-3mW" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="dc2-uy-ZtC"/>
+                            <constraint firstItem="6Zm-lG-6AT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.45" id="eff-kl-kJO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bmh-aM-lZT"/>
+                                <exclude reference="bd1-x4-o1V"/>
+                                <exclude reference="eff-kl-kJO"/>
+                                <exclude reference="J9r-nm-vRD"/>
+                                <exclude reference="dc2-uy-ZtC"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="Bmh-aM-lZT"/>
+                                <exclude reference="Jl9-ad-i7d"/>
+                                <exclude reference="XSk-Eu-GW1"/>
+                                <exclude reference="ZVx-dD-Qnr"/>
+                                <include reference="bd1-x4-o1V"/>
+                                <include reference="eff-kl-kJO"/>
+                                <exclude reference="9QS-eI-tTL"/>
+                                <exclude reference="CUu-Cf-gY0"/>
+                                <include reference="J9r-nm-vRD"/>
+                                <include reference="dc2-uy-ZtC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="445" y="-163"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cloud" width="300" height="197"/>
+    </resources>
+</document>
