@@ -8,7 +8,7 @@
 
 在`Size Inspector`窗格中,使用`delete`键可以将选中约束从当前`Size Class`移除.
 
-在`Document Outline`窗格中,使用`delete`键可以完全移除选中约束,使用`cmd`键 + `delete`键可以从当前`Size Class`移除.
+在`Document Outline`窗格中,使用`delete`键可以完全移除选中约束,使用`cmd + delete`键可以从当前`Size Class`移除.
 
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Beginning-Adaptive-Layout/Screenshot/ConstraintSizeClass.png)
 
