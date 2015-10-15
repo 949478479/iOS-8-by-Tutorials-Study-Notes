@@ -12,6 +12,6 @@
 
 可以针对不同`Size Class`设置字体.
 
-还可以开启`adjustsFontSizeToFitWidth`配合`minimumScaleFactor`,在空间有限时让字体大小能适当缩小从而完整地显示文字.
+还可以开启`adjustsFontSizeToFitWidth`配合`minimumScaleFactor`,在空间有限时适当缩小字体从而完整地显示文字.
 
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Beginning-Adaptive-Layout/Screenshot/FontSizeClass.png)
