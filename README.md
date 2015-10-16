@@ -9,7 +9,7 @@
 
 ## 修改子控制器的 UITraitCollection
 
-控制器可以通过`setOverrideTraitCollection(_:forChildViewController:)`方法来修改子控制器的`traitCollection`,从而改变一些默认的布局行为.例如,像下面这样,指定高度不足`1000`时,也就是除了`iPad`设备竖屏之外的情况下,都属于`compact height`的情况.正常情况下,`iPhone`设备在竖屏时是`regular height`,横屏时是`compact height`.而`iPad`设备横竖屏都是`regular height`.通过这样的修改,就可以让设备在横屏下呈现和默认行为不同的布局.例如只在`iPad`设备竖屏下才显示某视图之类的.当高度超过`1000`时,`traitOverride`为`nil`,这将会重置之前的修改,重新沿用原有的默认行为,即子控制器沿用父控制器的`traitCollection`.
+控制器可以通过`setOverrideTraitCollection(_:forChildViewController:)`方法来修改子控制器的`traitCollection`,从而改变一些默认的布局行为.例如,像下面这样,指定高度不足`1000`时,也就是除了`iPad`设备竖屏的情况,都归为`compact height`.正常情况下,`iPhone`设备在竖屏时是`regular height`,横屏时是`compact height`.而`iPad`设备横竖屏都是`regular height`.通过这样的修改,就可以让设备在横屏下呈现和默认行为不同的布局.例如只在`iPad`设备竖屏下才显示某视图之类的.当高度超过`1000`时,`traitOverride`为`nil`,这将会重置之前的修改,重新沿用原有的默认行为,即子控制器沿用父控制器的`traitCollection`,这时候`verticalSizeClass`将是`regular`.
 
 ```swift
 func configureTraitOverrideForSize(size: CGSize) {
@@ -44,7 +44,7 @@ override func viewWillTransitionToSize(size: CGSize,
 
 `UISplitViewController`会根据当前环境是`compact width`还是`regular width`决定`detail view controller`的显示方式.对于所有`iPhone`设备,竖屏下都是`compact width`,因此`detail view controller`将会以`modal`或者`push`的方式呈现,这取决于`master view controller`是否嵌套了导航控制器.而对于`iPhone plus`设备,横屏下则是`regular width`,因此`detail view controller`会像`iPad`设备一样显示.
 
-`splitViewController`首次呈现时,`iPhone`设备在竖屏下默认会直接显示`detail view controller`.若想显示`master view controller`,则可以实现下面这个`UISplitViewController`的代理方法,返回`true`.该代理方法会在`compact width`和`regular width`过渡时调用,这意味着`iPad`设备不会调用此方法,普通`iPhone`设备只会在一开始调用一次,而`iPhone plus`设备每次旋转屏幕都会调用.
+`splitViewController`首次呈现时,`iPhone`设备在竖屏下默认会直接`modal`或者`push`到`detail view controller`.若想显示`master view controller`,则可以实现下面这个`UISplitViewController`的代理方法,返回`true`.该代理方法会在`compact width`和`regular width`过渡时调用,这意味着`iPad`设备不会调用此方法,普通`iPhone`设备只会在一开始调用一次,而`iPhone plus`设备每次旋转屏幕都会调用.
 
 ```swift
 func splitViewController(splitViewController: UISplitViewController,
@@ -68,8 +68,8 @@ navigationItem.leftItemsSupplementBackButton = true
 
 ## Size Classes 和图片资源
 
-![]()
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/SizeClasses%E5%92%8C%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%901.png)
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/SizeClasses%E5%92%8C%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%902.png)
 
 如图,可以根据不同的`Size Classes`显示不同的图片.中括号中的符号含义如下:
 
@@ -79,7 +79,7 @@ navigationItem.leftItemsSupplementBackButton = true
 
 利用前面提到的修改子控制器的`traitCollection`的方法,就可以实现父控制器和子控制器分别显示不同的图片.
 
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/SizeClasses%E5%92%8C%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%903.png)
 
 如图,最上面的大云彩和中间的小云彩是同名图片资源,但是中间的小云彩属于子控制器部分,通过修改子控制器的`traitCollection`,从而显示了不同的图片.
 
@@ -89,11 +89,11 @@ navigationItem.leftItemsSupplementBackButton = true
 
 注意,`iPhone`设备使用`UISplitViewController`且以`push`方式呈现`detail view controller`时,导航控制器的`hidesBarsWhenVerticallyCompact`属性以`master view controller`的导航控制器的设置为准.
 
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/%E6%98%BE%E7%A4%BA%E5%92%8C%E9%9A%90%E8%97%8F%E5%AF%BC%E8%88%AA%E6%A0%8F.png)
 
 ## Size Classes 和 UIAppearance
 
-`iOS 8`中`UIAppearance`也增加了对`Size Classes`的支持,例如像下面这样根据`verticalSizeClass`设置字体.这在`iPhone`设备上会根据横竖屏显示不同大小的导航栏标题字体.而对于`iPad`设备,由于横竖屏都是`regular height`,该设置不会有任何效果.
+`iOS 8`中`UIAppearance`也增加了对`Size Classes`的支持,例如像下面这样根据`verticalSizeClass`设置字体.这在`iPhone`设备上会根据横竖屏显示不同大小的导航栏标题字体.而对于`iPad`设备,由于横竖屏都是`regular height`,只会显示大号的字体.
 
 ```swift
 func prepareNavigationBarAppearance() {
