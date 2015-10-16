@@ -13,7 +13,7 @@
 
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/InstallableViews.png)
 
-## UITraitCollection 介绍以及修改子控制器的 traitCollection
+## UITraitCollection 以及修改子控制器的 traitCollection
 
 `UITraitCollection`封装了一系列用来描述当前环境信息的特性,例如水平和垂直方向的`Size Classes`,屏幕`scale`,设备`idiom`等.`UITraitEnvironment`协议声明了一个类型为`UITraitCollection`的`traitCollection`属性,`UIViewController`和`UIView`都采纳了该协议,这意味着几乎可以随时随地地获取当前的`traitCollection`.
 
