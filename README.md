@@ -68,6 +68,7 @@ navigationItem.leftItemsSupplementBackButton = true
 
 ## Size Classes 和图片资源
 
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/SizeClasses%E5%92%8C%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%900.png)
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/SizeClasses%E5%92%8C%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%901.png)
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/SizeClasses%E5%92%8C%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%902.png)
 
