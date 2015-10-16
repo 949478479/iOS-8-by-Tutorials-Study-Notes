@@ -76,8 +76,8 @@
 		2285924E198E2C5F006945C7 /* WorldWeather */ = {
 			isa = PBXGroup;
 			children = (
-				22859270198E301C006945C7 /* DataLayer */,
 				22859251198E2C5F006945C7 /* AppDelegate.swift */,
+				22859270198E301C006945C7 /* DataLayer */,
 				2285927D198E40CC006945C7 /* DetailView */,
 				2285927E198E4149006945C7 /* MasterView */,
 				22859257198E2C5F006945C7 /* Main.storyboard */,
