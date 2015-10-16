@@ -7,9 +7,21 @@
 - `table view`的`rowHeight`属性需设置为`UITableViewAutomaticDimension`.
 - `table view`的`estimatedRowHeight`属性必须设置为`非0值`.尽量让该值接近实际高度,若相差过大,`table view`滚动时会出现"跳跃".
 
-## 修改子控制器的 UITraitCollection
+## Installable View
 
-控制器可以通过`setOverrideTraitCollection(_:forChildViewController:)`方法来修改子控制器的`traitCollection`,从而改变一些默认的布局行为.例如,像下面这样,指定高度不足`1000`时,也就是除了`iPad`设备竖屏的情况,都归为`compact height`.正常情况下,`iPhone`设备在竖屏时是`regular height`,横屏时是`compact height`.而`iPad`设备横竖屏都是`regular height`.通过这样的修改,就可以让设备在横屏下呈现和默认行为不同的布局.例如只在`iPad`设备竖屏下才显示某视图之类的.当高度超过`1000`时,`traitOverride`为`nil`,这将会重置之前的修改,重新沿用原有的默认行为,即子控制器沿用父控制器的`traitCollection`,这时候`verticalSizeClass`将是`regular`.
+不仅仅是布局约束和字体可以指定`Size Classes`,视图也可以.可以很灵活地指定一个视图在哪种`Size Classes`下显示,一般来说会在`Any Any`的`Size Classes`下设置通用的布局,然后切换不同的`Size Classes`,使用`cmd + delete`键从该`Size Classes`删除一个视图.或者像下图这样在`attributes inspector`窗格中添加不同`Size Classes`并设置勾选,从而决定该视图在哪些`Size Classes`下显示.
+
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/InstallableViews.png)
+
+## UITraitCollection 介绍以及修改子控制器的 traitCollection
+
+`UITraitCollection`封装了一系列用来描述当前环境信息的特性,例如水平和垂直方向的`Size Classes`,屏幕`scale`,设备`idiom`等.`UITraitEnvironment`协议声明了一个类型为`UITraitCollection`的`traitCollection`属性,`UIViewController`和`UIView`都采纳了该协议,这意味着几乎可以随时随地地获取当前的`traitCollection`.
+
+不同设备在不同方向都有固有的`traitCollection`,并且会沿着`view controller`和`view`层级向下传递.控制器可以通过`setOverrideTraitCollection(_:forChildViewController:)`方法来修改子控制器的`traitCollection`,从而改变一些默认的布局行为.
+
+例如,像下面这样,指定高度不足`1000`时,也就是除了`iPad`设备竖屏的情况,都归为`compact height`.正常情况下,`iPhone`设备在竖屏时是`regular height`,横屏时是`compact height`.而`iPad`设备横竖屏都是`regular height`.通过这样的修改,就可以让设备在横屏下呈现和默认行为不同的布局.例如只在`iPad`设备竖屏下才显示某视图之类的.
+
+注意这里只提供了`verticalSizeClass`的信息,因此这只会覆盖子控制器的`traitCollection`的`verticalSizeClass`.另外,一旦修改了`traitCollection`,每次设备旋转时都需要修改,否则只会沿用上次修改后的值.例如,这里指定当高度超过`1000`时,`traitOverride`为`nil`,这将会重置之前的修改,重新沿用原有的默认行为,即子控制器沿用父控制器的`traitCollection`,这时候`verticalSizeClass`将是`regular`.否则,即使高度超过`1000`,也就是`iPad`由横屏变为竖屏,子控制器的`verticalSizeClass`将依旧是之前设置的`compact`,而不会沿用父控制器的`regular`.
 
 ```swift
 func configureTraitOverrideForSize(size: CGSize) {
@@ -30,7 +42,7 @@ override func viewDidLoad() {
 }
 ```
 
-如果需要响应屏幕旋转,还可以在下面这个方法中进一步做出修改:
+如上所述,如果需要响应屏幕旋转,还可以在下面这个方法中进一步做出修改.每当设备旋转造成`view`的`bounds`改变时,此方法就会调用,可以在这里修改子控制器的`traitCollection`.
 
 ```swift
 override func viewWillTransitionToSize(size: CGSize,
