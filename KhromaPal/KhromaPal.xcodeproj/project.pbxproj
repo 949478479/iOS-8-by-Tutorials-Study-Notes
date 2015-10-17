@@ -1,0 +1,381 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18761F4D1BD224DB008A0BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F4B1BD224DB008A0BDD /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F521BD224E0008A0BDD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F501BD224E0008A0BDD /* DetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F531BD224E0008A0BDD /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F511BD224E0008A0BDD /* MasterViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F571BD22534008A0BDD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18761F551BD22534008A0BDD /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
+		18761F581BD22534008A0BDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18761F561BD22534008A0BDD /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		18761F5A1BD2326D008A0BDD /* TraitOverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F591BD2326D008A0BDD /* TraitOverrideViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F5C1BD2351D008A0BDD /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F5B1BD2351D008A0BDD /* SplitViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F5F1BD23E57008A0BDD /* PaletteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F5E1BD23E57008A0BDD /* PaletteContainer.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F611BD23FC4008A0BDD /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F601BD23FC4008A0BDD /* NavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F661BD26DA7008A0BDD /* UIViewControllerShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F651BD26DA7008A0BDD /* UIViewControllerShow.swift */; settings = {ASSET_TAGS = (); }; };
+		18761F681BD28BD9008A0BDD /* NoPaletteSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18761F671BD28BD9008A0BDD /* NoPaletteSelectedViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2220647B1967336E00BD4FBC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2220647A1967336E00BD4FBC /* Images.xcassets */; };
+		22BE302B19674A9D00772605 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE302A19674A9D00772605 /* ColorPalette.swift */; };
+		22BE302D19674C8D00772605 /* PaletteTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE302C19674C8D00772605 /* PaletteTreeNode.swift */; };
+		22BE302F19674CC400772605 /* ColorPaletteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE302E19674CC400772605 /* ColorPaletteCollection.swift */; };
+		22BE303119674ECF00772605 /* ColorPaletteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE303019674ECF00772605 /* ColorPaletteProvider.swift */; };
+		22BE30351967521700772605 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE30341967521700772605 /* Colours.m */; };
+		22BE30371967609100772605 /* DefaultColourSwatchCollection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22BE30361967609100772605 /* DefaultColourSwatchCollection.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		18761F4B1BD224DB008A0BDD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		18761F4C1BD224DB008A0BDD /* KhromaPal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KhromaPal-Info.plist"; sourceTree = "<group>"; };
+		18761F501BD224E0008A0BDD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		18761F511BD224E0008A0BDD /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		18761F551BD22534008A0BDD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		18761F561BD22534008A0BDD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		18761F591BD2326D008A0BDD /* TraitOverrideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitOverrideViewController.swift; sourceTree = "<group>"; };
+		18761F5B1BD2351D008A0BDD /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		18761F5E1BD23E57008A0BDD /* PaletteContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteContainer.swift; sourceTree = "<group>"; };
+		18761F601BD23FC4008A0BDD /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		18761F651BD26DA7008A0BDD /* UIViewControllerShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerShow.swift; sourceTree = "<group>"; };
+		18761F671BD28BD9008A0BDD /* NoPaletteSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoPaletteSelectedViewController.swift; sourceTree = "<group>"; };
+		222064591967336E00BD4FBC /* KhromaPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KhromaPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2220647A1967336E00BD4FBC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		22BE302A19674A9D00772605 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		22BE302C19674C8D00772605 /* PaletteTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteTreeNode.swift; sourceTree = "<group>"; };
+		22BE302E19674CC400772605 /* ColorPaletteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPaletteCollection.swift; sourceTree = "<group>"; };
+		22BE303019674ECF00772605 /* ColorPaletteProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPaletteProvider.swift; sourceTree = "<group>"; };
+		22BE30321967521600772605 /* KhromaPal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KhromaPal-Bridging-Header.h"; sourceTree = "<group>"; };
+		22BE30331967521700772605 /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
+		22BE30341967521700772605 /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
+		22BE30361967609100772605 /* DefaultColourSwatchCollection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultColourSwatchCollection.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		222064561967336E00BD4FBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18761F4A1BD224DB008A0BDD /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2220647A1967336E00BD4FBC /* Images.xcassets */,
+				18761F4B1BD224DB008A0BDD /* AppDelegate.swift */,
+				18761F4C1BD224DB008A0BDD /* KhromaPal-Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		18761F4F1BD224E0008A0BDD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18761F501BD224E0008A0BDD /* DetailViewController.swift */,
+				18761F671BD28BD9008A0BDD /* NoPaletteSelectedViewController.swift */,
+				18761F511BD224E0008A0BDD /* MasterViewController.swift */,
+				18761F591BD2326D008A0BDD /* TraitOverrideViewController.swift */,
+				18761F5B1BD2351D008A0BDD /* SplitViewController.swift */,
+				18761F601BD23FC4008A0BDD /* NavigationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		18761F541BD22534008A0BDD /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				18761F551BD22534008A0BDD /* LaunchScreen.xib */,
+				18761F561BD22534008A0BDD /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		18761F5D1BD23E45008A0BDD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				18761F5E1BD23E57008A0BDD /* PaletteContainer.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		18761F641BD26DA7008A0BDD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				18761F651BD26DA7008A0BDD /* UIViewControllerShow.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		222064501967336E00BD4FBC = {
+			isa = PBXGroup;
+			children = (
+				222064621967336E00BD4FBC /* KhromaPal */,
+				2220645A1967336E00BD4FBC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2220645A1967336E00BD4FBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				222064591967336E00BD4FBC /* KhromaPal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		222064621967336E00BD4FBC /* KhromaPal */ = {
+			isa = PBXGroup;
+			children = (
+				18761F641BD26DA7008A0BDD /* Extension */,
+				18761F5D1BD23E45008A0BDD /* Protocol */,
+				18761F541BD22534008A0BDD /* Storyboard */,
+				18761F4F1BD224E0008A0BDD /* Controller */,
+				18761F4A1BD224DB008A0BDD /* Other */,
+				22BE302719674A6F00772605 /* 3rdParty */,
+				22BE302819674A6F00772605 /* DataLayer */,
+			);
+			path = KhromaPal;
+			sourceTree = "<group>";
+		};
+		22BE302719674A6F00772605 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				22BE30331967521700772605 /* Colours.h */,
+				22BE30341967521700772605 /* Colours.m */,
+				22BE30321967521600772605 /* KhromaPal-Bridging-Header.h */,
+			);
+			path = 3rdParty;
+			sourceTree = "<group>";
+		};
+		22BE302819674A6F00772605 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				22BE30361967609100772605 /* DefaultColourSwatchCollection.plist */,
+				22BE302C19674C8D00772605 /* PaletteTreeNode.swift */,
+				22BE302A19674A9D00772605 /* ColorPalette.swift */,
+				22BE302E19674CC400772605 /* ColorPaletteCollection.swift */,
+				22BE303019674ECF00772605 /* ColorPaletteProvider.swift */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		222064581967336E00BD4FBC /* KhromaPal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 222064911967336E00BD4FBC /* Build configuration list for PBXNativeTarget "KhromaPal" */;
+			buildPhases = (
+				222064551967336E00BD4FBC /* Sources */,
+				222064561967336E00BD4FBC /* Frameworks */,
+				222064571967336E00BD4FBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KhromaPal;
+			productName = KhromaPal;
+			productReference = 222064591967336E00BD4FBC /* KhromaPal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		222064511967336E00BD4FBC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = "";
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = RayWenderlich;
+			};
+			buildConfigurationList = 222064541967336E00BD4FBC /* Build configuration list for PBXProject "KhromaPal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			mainGroup = 222064501967336E00BD4FBC;
+			productRefGroup = 2220645A1967336E00BD4FBC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				222064581967336E00BD4FBC /* KhromaPal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		222064571967336E00BD4FBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18761F571BD22534008A0BDD /* LaunchScreen.xib in Resources */,
+				18761F581BD22534008A0BDD /* Main.storyboard in Resources */,
+				22BE30371967609100772605 /* DefaultColourSwatchCollection.plist in Resources */,
+				2220647B1967336E00BD4FBC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		222064551967336E00BD4FBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22BE302B19674A9D00772605 /* ColorPalette.swift in Sources */,
+				18761F611BD23FC4008A0BDD /* NavigationController.swift in Sources */,
+				18761F531BD224E0008A0BDD /* MasterViewController.swift in Sources */,
+				22BE302F19674CC400772605 /* ColorPaletteCollection.swift in Sources */,
+				18761F4D1BD224DB008A0BDD /* AppDelegate.swift in Sources */,
+				22BE303119674ECF00772605 /* ColorPaletteProvider.swift in Sources */,
+				18761F5C1BD2351D008A0BDD /* SplitViewController.swift in Sources */,
+				18761F521BD224E0008A0BDD /* DetailViewController.swift in Sources */,
+				22BE30351967521700772605 /* Colours.m in Sources */,
+				18761F661BD26DA7008A0BDD /* UIViewControllerShow.swift in Sources */,
+				18761F681BD28BD9008A0BDD /* NoPaletteSelectedViewController.swift in Sources */,
+				18761F5A1BD2326D008A0BDD /* TraitOverrideViewController.swift in Sources */,
+				22BE302D19674C8D00772605 /* PaletteTreeNode.swift in Sources */,
+				18761F5F1BD23E57008A0BDD /* PaletteContainer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2220648F1967336E00BD4FBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		222064901967336E00BD4FBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		222064921967336E00BD4FBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = "KhromaPal/Other/KhromaPal-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raywenderlich.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KhromaPal/3rdParty/KhromaPal-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		222064931967336E00BD4FBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = "KhromaPal/Other/KhromaPal-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raywenderlich.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KhromaPal/3rdParty/KhromaPal-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		222064541967336E00BD4FBC /* Build configuration list for PBXProject "KhromaPal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2220648F1967336E00BD4FBC /* Debug */,
+				222064901967336E00BD4FBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		222064911967336E00BD4FBC /* Build configuration list for PBXNativeTarget "KhromaPal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				222064921967336E00BD4FBC /* Debug */,
+				222064931967336E00BD4FBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 222064511967336E00BD4FBC /* Project object */;
+}

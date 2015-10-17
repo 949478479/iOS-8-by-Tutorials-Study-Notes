@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Adaptive View Controller Hierarchies
 
 这一章讲解了如何在视图控制器层级中引入自适应布局,以及`UISplitViewController`的使用.
@@ -148,3 +149,5 @@ navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
 ```
 
 需要注意的是,这样会将返回按钮顶掉,在`iPad`设备上`splitViewController`不会使用`push`的方式,因此也不存在返回按钮.而在`iPhone`设备上,由横屏切换到竖屏后,返回按钮就不见了.因此还需要设置`navigationItem.leftItemsSupplementBackButton`属性为`true`
+=======
+>>>>>>> Stashed changes
