@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # Adaptive View Controller Hierarchies
 
 这一章讲解了如何在视图控制器层级中引入自适应布局,以及`UISplitViewController`的使用.
@@ -9,17 +8,17 @@
 
 例如可以像下图这样:
 
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/StoryboardLayout.png)
 
 在普通`iPhone`设备上,`detail view controller`将会以`push`的方式呈现,而在`iPhone plus`设备横屏状态下,`detail view controller`会像`iPad`设备一样呈现:
 
-![]()
-![]()
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/SplitOniPhone1.png)
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/SplitOniPhone2.png)
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/SplitOniPhone3.png)
 
 可以看到截图中实际上是`iPhone 6s`模拟器而非`plus`,这用到了上篇笔记中提到的修改子控制器的`traitCollection`的方法.首先需要将`splitViewController`添加到一个普通控制器上作为子控制器,如图所示,这里使用了一个`Container View`来实现.
 
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/ContainerView.png)
 
 然后可以通过在该控制器中实现下面的方法来修改`splitViewController`的`traitCollection`:
 
@@ -58,8 +57,8 @@ func splitViewController(splitViewController: UISplitViewController,
 
 另外,在`iPhone`设备上竖屏状态下,如果左侧的导航控制器`push`到了一个控制器,例如左侧是个深层级的菜单,这时候切换到横屏状态,那么刚才`push`的控制器会被导航控制器`pop`,而变为右侧的`detail view controller`.如下图所示:
 
-![]()
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/SplitPop1.png)
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/SplitPop2.png)
 
 这可以利用下面这个代理方法解决.此方法用于在`splitViewController`由`compact width`状态进入`regular width`状态时,提供其右侧的`detail view controller`.和前面的代理方法一样,`iPad`设备不会调用此方法.
 
@@ -83,15 +82,15 @@ func splitViewController(splitViewController: UISplitViewController,
 
 例如,额外用一个控制器专门显示一些没有数据的提示信息,然后在`detail view controller`的`viewDidLoad()`之类的方法中进行判断,如果当前没有数据,就调用`showDetailViewController(_:sender:)`方法或者执行一个`show detail`的`segue`呈现出来.就像下图这样:
 
-![]()
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/EmptyVCOniPhone.png)
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/EmptyVCOniPad.png)
 
 ## 处理 disclosure indicators 
 
 如下图所示,在横屏状态下,`cell`是不需要箭头标记的,切换到竖屏后,则应显示箭头标记.
 
-![]()
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/DisclosureIndicators1.png)
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/DisclosureIndicators2.png)
 
 是否显示箭头标记,意味着点击该`cell`是否会发生`push`操作.这里介绍下`iOS 8`新引入的两个方法:
 
@@ -148,6 +147,4 @@ UIView.animateWithDuration(0.25, animations: {
 navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
 ```
 
-需要注意的是,这样会将返回按钮顶掉,在`iPad`设备上`splitViewController`不会使用`push`的方式,因此也不存在返回按钮.而在`iPhone`设备上,由横屏切换到竖屏后,返回按钮就不见了.因此还需要设置`navigationItem.leftItemsSupplementBackButton`属性为`true`
-=======
->>>>>>> Stashed changes
+需要注意的是,这样会将返回按钮顶掉,在`iPad`设备上`splitViewController`不会使用`push`的方式,因此也不存在返回按钮.而在`iPhone`设备上,由横屏切换到竖屏后,返回按钮就不见了.因此还需要设置`navigationItem.leftItemsSupplementBackButton`属性为`true`.
