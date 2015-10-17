@@ -56,7 +56,7 @@ override func viewWillTransitionToSize(size: CGSize,
 
 `UISplitViewController`会根据当前环境是`compact width`还是`regular width`决定`detail view controller`的显示方式.对于所有`iPhone`设备,竖屏下都是`compact width`,因此`detail view controller`将会以`modal`或者`push`的方式呈现,这取决于`master view controller`是否嵌套了导航控制器.而对于`iPhone plus`设备,横屏下则是`regular width`,因此`detail view controller`会像`iPad`设备一样显示.
 
-`splitViewController`首次呈现时,`iPhone`设备在竖屏下默认会直接`modal`或者`push`到`detail view controller`.若想显示`master view controller`,则可以实现下面这个`UISplitViewController`的代理方法,返回`true`.该代理方法会在`compact width`和`regular width`过渡时调用,这意味着`iPad`设备不会调用此方法,普通`iPhone`设备只会在一开始调用一次,而`iPhone plus`设备每次旋转屏幕都会调用.
+`splitViewController`首次呈现时,`iPhone`设备在竖屏下默认会直接`modal`或者`push`到`detail view controller`.若想显示`master view controller`,则可以实现下面这个`UISplitViewController`的代理方法并返回`true`.该代理方法会在`regular width`过渡到`compact width`时调用,这意味着`iPad`设备不会调用此方法,普通`iPhone`设备只会在一开始调用一次,而`iPhone plus`设备每次由横屏过渡到竖屏都会调用.
 
 ```swift
 func splitViewController(splitViewController: UISplitViewController,
