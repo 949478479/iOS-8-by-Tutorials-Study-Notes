@@ -97,3 +97,33 @@ override func viewWillTransitionToSize(size: CGSize,
 对于同一个布局约束,即使激活多次,视图上依旧只会有一份.同样,反复移除同一布局约束也不会有问题.因此即使`iPhone`和`iPad`共用一套布局,`iPhone`设备会因为`IB`中设置的不同`Size Classes`而在设备旋转时自动更新一次布局约束,然后在上述方法中又会更新一次布局约束,也不会有什么问题.
 
 当然,上述方案有个问题,只有设备旋转时才会更新到对应的布局约束,而程序启动时并不会调用该方法.因此,对于`iPad`设备,无论横屏还是竖屏状态启动,视图上的布局约束都将会是`IB`中针对`iPad`的`Size Classes`设置的布局约束.不过可以在`viewDidLayoutSubviews()`方法中更新一次布局约束,通过一个`Bool`属性标记下,只在启动时更新一次即可.
+
+## UIView 的布局自适应
+
+`UIView`并未遵循`UIContentContainer`协议,因此前面介绍的方法只适用于`UIViewController`和`UIPresentationController`.但是`UIView`遵循了`UITraitEnvironment`协议,该协议声明了`traitCollection`属性和`traitCollectionDidChange(_:)`方法,也可以用来响应布局变化.另外,`UIScreen`,`UIWindow`,`UIViewController`,`UIPresentationController`也都采纳了此协议,不过对于视图控制器来说,使用前面介绍的方法可能更为方便.
+
+例如,下面的代码创建了一个能根据当前`verticalSizeClass`决定`padding`大小的`UILabel`子类:
+
+```swift
+class PaddedLabel: UILabel {
+
+    var verticalPadding: CGFloat = 0.0
+
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.verticalSizeClass != previousTraitCollection?.verticalSizeClass {
+            // iPhone 设备横屏时没有 padding, 竖屏以及 iPad 设备 padding 为 20.
+            verticalPadding = (traitCollection.verticalSizeClass == .Compact) ? 0.0 : 20.0
+            // 更新固有尺寸,自动布局系统会重新调用 intrinsicContentSize() 方法获取固有尺寸.
+            invalidateIntrinsicContentSize() 
+        }
+    }
+
+    override func intrinsicContentSize() -> CGSize {
+        var intrinsicContentSize = super.intrinsicContentSize()
+        intrinsicContentSize.height += verticalPadding // 在原有固有尺寸基础上将高度加上 padding.
+        return intrinsicContentSize
+    }
+}
+```
