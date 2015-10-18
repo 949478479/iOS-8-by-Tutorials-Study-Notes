@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>sunburst</key>
+	<string>FAA646</string>
+	<key>red</key>
+	<string>FF0000</string>
+	<key>dark blue</key>
+	<string>0A435C</string>
+	<key>lavender</key>
+	<string>A67CE8</string>
+	<key>shocking pink</key>
+	<string>A71848</string>
+	<key>blue</key>
+	<string>7193D9</string>
+	<key>baby green</key>
+	<string>C7DBA4</string>
+	<key>purple gray</key>
+	<string>8A8BA6</string>
+	<key>violet</key>
+	<string>9347C3</string>
+	<key>yellow</key>
+	<string>E6CA18</string>
+	<key>sea blue</key>
+	<string>418786</string>
+	<key>green</key>
+	<string>9CBB86</string>
+	<key>brown</key>
+	<string>783423</string>
+	<key>rose pink</key>
+	<string>B8656B</string>
+	<key>orange</key>
+	<string>CC6E1D</string>
+	<key>banana green</key>
+	<string>84A135</string>
+	<key>purple</key>
+	<string>8940bd</string>
+	<key>burnt orange</key>
+	<string>ae6f3b</string>
+	<key>mint green</key>
+	<string>73d0b5</string>
+	<key>sky blue</key>
+	<string>93b1db</string>
+	<key>pink</key>
+	<string>D95592</string>
+</dict>
+</plist>
