@@ -66,9 +66,9 @@ func presentationController(controller: UIPresentationController,
 }
 ```
 
-这里有个问题,由于代理方法返回了`.FullScreen`,这将导致在`iPad`设备上也会变为全屏了.
+这里有个问题,由于代理方法返回了`.FullScreen`,这将导致在`iPad`设备上也会变为全屏的 modal 形式.
 
-上面的代理方法其实有`8.0`和`8.3`两个版本,文档是`8.0`的,`8.3`只在头文件里:
+其实上面的代理方法有`8.0`和`8.3`两个版本,文档是`8.0`的,`8.3`只在头文件里:
 
 ```swift
 public protocol UIAdaptivePresentationControllerDelegate : NSObjectProtocol {
@@ -93,7 +93,7 @@ public protocol UIAdaptivePresentationControllerDelegate : NSObjectProtocol {
 
 对于老版本的`adaptivePresentationStyleForPresentationController(_:)`方法,在`iPad`设备下是不会调用的,但是如果实现此方法并返回`.FullScreen`,在`iPhone plus`设备横屏下将依旧是`UIModalPresentationPageSheet`风格,只有实现`8.3`版本的才可以,但是这又会导致`iPad`设备上也变成全屏的 modal 形式.
 
-这里有个折中的解决方案,就是无论什么设备,都以 popover 形式呈现就好了,这样也不存在导航栏的问题了.非常简单,只实现下面这个代理方法返回`.None`即可:
+这里有个折中的解决方案,就是无论什么设备,都以 popover 形式呈现就好了,这样也不存在导航栏的问题了.只需在先前那个代理方法中返回`.None`即可,另一个代理方法可以删了.如此一来,无论是`iPad`设备还是`iPhone`设备,横屏还是竖屏,都会统一以 popover 形式呈现.
 
 ```swift
 func adaptivePresentationStyleForPresentationController(controller: UIPresentationController,
@@ -102,4 +102,33 @@ func adaptivePresentationStyleForPresentationController(controller: UIPresentati
 }
 ```
 
-如此一来,无论是`iPad`设备还是`iPhone`设备,横屏还是竖屏,都会统一以 popover 形式呈现.
+## UISearchController
+
+`iOS 8`新推出了`UISearchController`,用来取代`UISearchDisplayController`.它的优势是完全自适应,而且它还允许使用任意类型的视图控制器展示搜索结果,而不仅仅是`UITableViewController`.
+
+使用`UISearchController`仅需三个步骤:
+
+1.  创建一个用来展示搜索结果的视图控制器,可以是`UITableViewController`,`UICollectionViewController`,或者其他视图控制器.
+2.  用展示搜索结果的视图控制器创建`UISearchController`.
+3.  当搜索框文本变化时,`UISearchController`会通知`searchResultsUpdater`,这是它的一个属性,可以是符合`UISearchResultsUpdating`协议的任意对象.通常,会让展示搜索结果的视图控制器作为`searchResultsUpdater`,这样就能实时更新搜索结果.
+
+像下面这样创建一个`UISearchController`.注意这里初始化参数传入了`nil`,这样 searchController 除了搜索框以外都会是透明的,就可以直接用后面的被搜索的 table view 来展示搜索结果:
+
+```swift
+searchController = UISearchController(searchResultsController: nil)
+searchController.searchResultsUpdater = self
+/* 因为搜索结果用被搜索的 table view 展示,而 searchController 的 view 位于 table view 上层,
+因此不要加蒙版,否则看不清下面的 table view. */
+searchController.dimsBackgroundDuringPresentation = false 
+
+definesPresentationContext = true 
+tableView.tableHeaderView = searchController.searchBar
+```
+
+然后实现`UISearchResultsUpdating`协议要求的方法:
+
+```swift
+func updateSearchResultsForSearchController(searchController: UISearchController) {
+    // 从 searchController.searchBar.text 中获取搜索内容,对数据模型进行过滤,刷新 table view.
+}
+```
