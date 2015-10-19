@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>countryName</key>
+		<string>Canada</string>
+		<key>imageName</key>
+		<string>flag_canada</string>
+		<key>hello</key>
+		<string>Hello</string>
+		<key>population</key>
+		<string>35.4 million</string>
+		<key>currency</key>
+		<string>Canadian Dollar</string>
+		<key>language</key>
+		<string>English</string>
+		<key>fact</key>
+		<string>Canada holds the record for the most gold medals ever won at the Winter Olympics, since taking 14 Golds at the 2010 Vancouver Winter Olympics.</string>
+		<key>quizQuestion</key>
+		<string>What is the national police force of Canada called?</string>
+		<key>correctAnswer</key>
+		<string>Royal Canadian Mounted Police</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>Royal Canadian Mounted Police</string>
+			<string>Northwest Mounted Police</string>
+			<string>Canadian Mounted Police</string>
+			<string>Federal Canadian Police Force</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>France</string>
+		<key>imageName</key>
+		<string>flag_france</string>
+		<key>hello</key>
+		<string>Bonjour</string>
+		<key>population</key>
+		<string>65.7 million</string>
+		<key>currency</key>
+		<string>Euro</string>
+		<key>language</key>
+		<string>French</string>
+		<key>fact</key>
+		<string>France is the most visited country in the world: 83 million tourists in 2012.</string>
+		<key>quizQuestion</key>
+		<string>Who originally sold the Eiffel tower?</string>
+		<key>correctAnswer</key>
+		<string>Victor Lustig</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>Gustave Eiffel</string>
+			<string>Leonardo da Vinci</string>
+			<string>Ferdinand Dutert</string>
+			<string>Victor Lustig</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>Germany</string>
+		<key>imageName</key>
+		<string>flag_germany</string>
+		<key>hello</key>
+		<string>Hallo</string>
+		<key>population</key>
+		<string>80.7 million</string>
+		<key>currency</key>
+		<string>Euro</string>
+		<key>language</key>
+		<string>German</string>
+		<key>fact</key>
+		<string>There are 35 dialects of the German language.</string>
+		<key>quizQuestion</key>
+		<string>When did East Germany and West Germany unite?</string>
+		<key>correctAnswer</key>
+		<string>1990</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>1986</string>
+			<string>1990</string>
+			<string>1994</string>
+			<string>2000</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>Italy</string>
+		<key>imageName</key>
+		<string>flag_italy</string>
+		<key>hello</key>
+		<string>Ciao</string>
+		<key>population</key>
+		<string>60.7 million</string>
+		<key>currency</key>
+		<string>Euro</string>
+		<key>language</key>
+		<string>Italian</string>
+		<key>fact</key>
+		<string>Two of Europe&apos;s smallest countries, San Marino and the Vatican, are enclaved within Italy.</string>
+		<key>quizQuestion</key>
+		<string>The coastline of Italy assumes the shape of a:</string>
+		<key>correctAnswer</key>
+		<string>Boot</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>Shoe</string>
+			<string>Boot</string>
+			<string>Sandal</string>
+			<string>Triangle</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>Japan</string>
+		<key>imageName</key>
+		<string>flag_japan</string>
+		<key>hello</key>
+		<string>こんにちは</string>
+		<key>population</key>
+		<string>126.6 million</string>
+		<key>currency</key>
+		<string>Yen</string>
+		<key>language</key>
+		<string>Japanese</string>
+		<key>fact</key>
+		<string>Japan&apos;s literacy rate is almost 100%.</string>
+		<key>quizQuestion</key>
+		<string>Japan is made up of ___ main islands.</string>
+		<key>correctAnswer</key>
+		<string>4</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>23</string>
+			<string>2</string>
+			<string>3</string>
+			<string>4</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>Mexico</string>
+		<key>imageName</key>
+		<string>flag_mexico</string>
+		<key>hello</key>
+		<string>Hola</string>
+		<key>population</key>
+		<string>118.3 million</string>
+		<key>currency</key>
+		<string>Peso</string>
+		<key>language</key>
+		<string>Spanish</string>
+		<key>fact</key>
+		<string>Tequila, tabasco and the chihuahua are all named after places in Mexico.</string>
+		<key>quizQuestion</key>
+		<string>What is the name of the ancient capital of the Aztecs?</string>
+		<key>correctAnswer</key>
+		<string>Tenochtitlan</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>Teotihuacan</string>
+			<string>Tenochtitlan</string>
+			<string>Tula</string>
+			<string>Texcoco</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>Russia</string>
+		<key>imageName</key>
+		<string>flag_russia</string>
+		<key>hello</key>
+		<string>привет</string>
+		<key>population</key>
+		<string>143.7 million</string>
+		<key>currency</key>
+		<string>Russian Ruble</string>
+		<key>language</key>
+		<string>Russian</string>
+		<key>fact</key>
+		<string>Russia is bigger than Pluto.</string>
+		<key>quizQuestion</key>
+		<string>Who was the first ruler of Russia?</string>
+		<key>correctAnswer</key>
+		<string>Rurik the Viking</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>Yaroslav the Wise</string>
+			<string>Vladimir the Red Sun</string>
+			<string>Rurik the Viking</string>
+			<string>Peter the Great</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>Spain</string>
+		<key>imageName</key>
+		<string>flag_spain</string>
+		<key>hello</key>
+		<string>Hola</string>
+		<key>population</key>
+		<string>46.7 million</string>
+		<key>currency</key>
+		<string>Euro</string>
+		<key>language</key>
+		<string>Spanish</string>
+		<key>fact</key>
+		<string>Spain is the only country in Europe that produces bananas.</string>
+		<key>quizQuestion</key>
+		<string>Where is the &quot;running of the bulls&quot; held every year?</string>
+		<key>correctAnswer</key>
+		<string>Pamplona</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>Seville</string>
+			<string>Barcelona</string>
+			<string>Madrid</string>
+			<string>Pamplona</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>Ukraine</string>
+		<key>imageName</key>
+		<string>flag_ukraine</string>
+		<key>hello</key>
+		<string>Вітаю</string>
+		<key>population</key>
+		<string>44.5 million</string>
+		<key>currency</key>
+		<string>Ukrainian Hryvnia</string>
+		<key>language</key>
+		<string>Ukrainian</string>
+		<key>fact</key>
+		<string>World&apos;s most visited McDonalds is situated near Kyiv central train station with more than 2 million orders annualy.</string>
+		<key>quizQuestion</key>
+		<string>What is the longest river in the country?</string>
+		<key>correctAnswer</key>
+		<string>Dnieper</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>Dnieper</string>
+			<string>Danube</string>
+			<string>Donets</string>
+			<string>Dniester</string>
+		</array>
+	</dict>
+	<dict>
+		<key>countryName</key>
+		<string>United States</string>
+		<key>imageName</key>
+		<string>flag_usa</string>
+		<key>hello</key>
+		<string>Hello</string>
+		<key>population</key>
+		<string>313.9 million</string>
+		<key>currency</key>
+		<string>US Dollar</string>
+		<key>language</key>
+		<string>English</string>
+		<key>fact</key>
+		<string>The US was the leading force behind the development of the Internet.</string>
+		<key>quizQuestion</key>
+		<string>Which US State is the home to the city who created the zipper?</string>
+		<key>correctAnswer</key>
+		<string>Illinois</string>
+		<key>quizAnswers</key>
+		<array>
+			<string>New Jersey</string>
+			<string>Illinois</string>
+			<string>Nebraska</string>
+			<string>North Dakota</string>
+		</array>
+	</dict>
+</array>
+</plist>
