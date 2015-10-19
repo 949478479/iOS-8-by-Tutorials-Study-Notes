@@ -1,5 +1,7 @@
 # Introducing Presentation Controllers
 
+这一章介绍了`UIAlertController`,`UIPopoverPresentationController`,以及`UISearchController`.
+
 ## UIAlertController
 
 在`iOS 8`之前,使用`UIAlertView`或者`UIActionSheet`来呈现一个弹窗展示一些信息并与用户进行交互.
