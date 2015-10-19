@@ -1,5 +1,7 @@
 # Intermediate Adaptive Layout
 
+这一章主要介绍了`UITraitCollection`,显示隐藏导航栏的新方法,以及`UISplitViewController`,`UIAppearance`和`Images.xcassets`对`Size Classes`的支持.
+
 ## 使用 self-sizing cell 的要点
 
 - `cell`的宽度由`table view`的宽度决定.
