@@ -1,7 +1,14 @@
 # Intermediate Adaptive Layout
 
-这一章主要介绍了`UITraitCollection`,显示隐藏导航栏的新方法,以及`UISplitViewController`,`UIAppearance`和`Images.xcassets`对`Size Classes`的支持.
+- [使用 self-sizing cell 的要点](#Auto-sizing table view cells)
+- [Installable View](#Installable views)
+- [UITraitCollection 以及修改子控制器的 traitCollection](#Overriding trait collections for child view controllers)
+- [iPhone 和 iPad 共用 UISplitViewController](#UISplitViewController)
+- [Size Classes 和图片资源](#Size-class specific images in asset catalogs)
+- [自动显示和隐藏导航栏](#Auto-hiding navigation bars)
+- [Size Classes 和 UIAppearance](#Size Classes & UIAppearance)
 
+<a name="Auto-sizing table view cells"></a>
 ## 使用 self-sizing cell 的要点
 
 - `cell`的宽度由`table view`的宽度决定.
@@ -9,12 +16,14 @@
 - `table view`的`rowHeight`属性需设置为`UITableViewAutomaticDimension`.
 - `table view`的`estimatedRowHeight`属性必须设置为`非0值`.尽量让该值接近实际高度,若相差过大,`table view`滚动时会出现"跳跃".
 
+<a name="Installable views"></a>
 ## Installable View
 
 不仅仅是布局约束和字体可以指定`Size Classes`,视图也可以.可以很灵活地指定一个视图在哪种`Size Classes`下显示,一般来说会在`Any Any`的`Size Classes`下设置通用的布局,然后切换不同的`Size Classes`,使用`cmd + delete`键从该`Size Classes`删除一个视图.或者像下图这样在`attributes inspector`窗格中添加不同`Size Classes`并设置勾选,从而决定该视图在哪些`Size Classes`下显示.
 
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/InstallableViews.png)
 
+<a name="Overriding trait collections for child view controllers"></a>
 ## UITraitCollection 以及修改子控制器的 traitCollection
 
 `UITraitCollection`封装了一系列用来描述当前环境信息的特性,例如水平和垂直方向的`Size Classes`,屏幕`scale`,设备`idiom`等.`UITraitEnvironment`协议声明了一个类型为`UITraitCollection`的`traitCollection`属性,`UIViewController`和`UIView`都采纳了该协议,这意味着几乎可以随时随地地获取当前的`traitCollection`.
@@ -54,6 +63,7 @@ override func viewWillTransitionToSize(size: CGSize,
 }
 ```
 
+<a name="UISplitViewController"></a>
 ## iPhone 和 iPad 共用 UISplitViewController 
 
 `UISplitViewController`会根据当前环境是`compact width`还是`regular width`决定`detail view controller`的显示方式.对于所有`iPhone`设备,竖屏下都是`compact width`,因此`detail view controller`将会以`modal`或者`push`的方式呈现,这取决于`master view controller`是否嵌套了导航控制器.而对于`iPhone plus`设备,横屏下则是`regular width`,因此`detail view controller`会像`iPad`设备一样显示.
@@ -80,6 +90,7 @@ navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
 navigationItem.leftItemsSupplementBackButton = true
 ```
 
+<a name="Size-class specific images in asset catalogs"></a>
 ## Size Classes 和图片资源
 
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/SizeClasses%E5%92%8C%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%900.png)
@@ -98,7 +109,8 @@ navigationItem.leftItemsSupplementBackButton = true
 
 如图,最上面的大云彩和中间的小云彩是同名图片资源,但是中间的小云彩属于子控制器部分,通过修改子控制器的`traitCollection`,从而显示了不同的图片.
 
-## 显示和隐藏导航栏
+<a name="Auto-hiding navigation bars"></a>
+## 自动显示和隐藏导航栏
 
 `iOS 8`中`UINavigationController`新增了几个关于导航栏的属性,可以在`iPhone`设备横屏,轻击,向上滑动或者键盘弹出时隐藏导航栏.
 
@@ -106,6 +118,7 @@ navigationItem.leftItemsSupplementBackButton = true
 
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Intermediate-Adaptive-Layout/Screenshot/%E6%98%BE%E7%A4%BA%E5%92%8C%E9%9A%90%E8%97%8F%E5%AF%BC%E8%88%AA%E6%A0%8F.png)
 
+<a name="Size Classes & UIAppearance"></a>
 ## Size Classes 和 UIAppearance
 
 `iOS 8`中`UIAppearance`也增加了对`Size Classes`的支持,例如像下面这样根据`verticalSizeClass`设置字体.这在`iPhone`设备上会根据横竖屏显示不同大小的导航栏标题字体.而对于`iPad`设备,由于横竖屏都是`regular height`,只会显示大号的字体.
