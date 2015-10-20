@@ -2,7 +2,7 @@
 
 - [iPhone 和 iPad 共用 UISplitViewController](#UISplitViewController)
 - [显示占位内容](#custom default view)
-- [处理 disclosure indicators](#Adaptive disclosure indicators)
+- [showViewController 与 showDetailViewController](#showViewController & showDetailViewController)
 - [UISplitViewController 的四种显示模式](#displayMode)
 - [displayModeButtonItem 与返回按钮](#displayModeButtonItem)
 
@@ -89,8 +89,8 @@ func splitViewController(splitViewController: UISplitViewController,
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/EmptyVCOniPhone.png)
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/EmptyVCOniPad.png)
 
-<a name="Adaptive disclosure indicators"></a>
-## 处理 disclosure indicators 
+<a name="showViewController & showDetailViewController"></a>
+## showViewController 与 showDetailViewController
 
 如下图所示,在横屏状态下,`cell`是不需要箭头标记的,切换到竖屏后,则应显示箭头标记.
 
@@ -112,7 +112,7 @@ func splitViewController(splitViewController: UISplitViewController,
 
 也可以有选择地重写这两个方法,进行一些自定义的呈现效果,注意适应不同的`regular`和`compact`环境.
 
-回到前面说的是否显示箭头标志的问题.对于处于导航控制器层级中的多级菜单,如果都是`push`操作,可以简单地判断是否还有子菜单来决定是否显示箭头.而对于`show detail`这种操作,则需判断`splitViewController`的`collapsed`属性,若为`true`,则是以`push`呈现,否则,说明`splitViewController`会以`secondary view controller`呈现,也就不需要剪头了.
+回到前面说的是否显示箭头标志的问题.对于处于导航控制器层级中的多级菜单,如果都是`push`操作,可以简单地判断是否还有子菜单来决定是否显示箭头.而对于`show detail`这种操作,则需判断`splitViewController`的`collapsed`属性,若为`true`,则是以`push`呈现,否则,说明`splitViewController`会以`secondary view controller`呈现,也就不需要箭头了.
 
 另外,在`iOS 8`中`UIViewController`类中新增加了通知`UIViewControllerShowDetailTargetDidChangeNotification`.当`splitViewController`在`expands`和`collapses`两种状态之间转换时,或者说,在`iPad`那样左右分屏显示的状态和`iPhone`那样`push`或者`modal`方式显示的状态之间转换时,就会发出该通知.
 
