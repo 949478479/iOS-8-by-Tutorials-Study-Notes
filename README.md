@@ -34,7 +34,9 @@ public func dismissalTransitionWillBegin()
 public func dismissalTransitionDidEnd(completed: Bool)
 ```
 
-首先,通常会在`presentationTransitionWillBegin()`方法中将自定义的视图添加到`UIPresentationController`的容器视图`containerView`上,`presentedViewController`的视图也在该视图上.然后利用`presentedViewController`的`transitionCoordinator`为自定义视图添加动画效果,这些动画会和`UIKit`的 presentation 动画一起执行,例如一个 modal 动画.
+首先,通常会在`presentationTransitionWillBegin()`方法中将自定义的视图添加到`UIPresentationController`的`containerView`上.`containerView`是`presentingViewController`和`presentedViewController`的`view`的共同父视图.它不是`UIPresentationController`的`view`,`UIPresentationController`继承自`NSObject`,不是一个视图控制器.
+
+然后利用`presentedViewController`的`transitionCoordinator`为自定义视图添加动画效果,这些动画会和`UIKit`的 presentation 动画一起执行,例如一个 modal 动画.
 
 ```swift
 override func presentationTransitionWillBegin() {
@@ -120,7 +122,7 @@ presentedViewController.transitioningDelegate = self
 presentViewController(presentedViewController, animated: true, completion: nil)
 ```
 
-代理需符合`UIViewControllerTransitioningDelegate`协议,在下面的代理方法中返回自定义的`UIPresentationController`:
+代理需符合`UIViewControllerTransitioningDelegate`协议,并在下面的代理方法中返回自定义的`UIPresentationController`:
 
 ```swift
 func presentationControllerForPresentedViewController(presented: UIViewController,
@@ -130,4 +132,4 @@ func presentationControllerForPresentedViewController(presented: UIViewControlle
 }
 ```
 
-这样就会在普通 modal 效果基础上增加半透明的背景视图,更复杂的用法是配合`UIViewControllerTransitioningDelegate`协议中的其他代理方法,提供实现`UIViewControllerAnimatedTransitioning`协议的动画对象,对动画过程进行自定义,还可支持手势交互.这些是`iOS 7`引入的,和`UIPresentationController`并无直接联系.
+更复杂的用法是配合`UIViewControllerTransitioningDelegate`协议中的其他代理方法,提供实现`UIViewControllerAnimatedTransitioning`协议的动画对象,对动画过程进行自定义,还可支持手势交互.这些是`iOS 7`引入的,和`UIPresentationController`并无直接联系.
