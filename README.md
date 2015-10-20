@@ -1,7 +1,12 @@
 # Transition Coordinators
 
-这一章介绍了如何根据设备旋转调整布局,以及`transition coordinator`对布局的新支持.
+- [被弃用的关于旋转的方法](#Deprecated rotation methods)
+- [transition coordinator](#transition coordinator)
+- [旋转后调整 cell 的尺寸](#Resizing Cells on Rotation)
+- [iPad 设备的旋转处理](#iPad rotation effects)
+- [UIView 的布局自适应](#adaptive view)
 
+<a name="Deprecated rotation methods"></a>
 ## 被弃用的关于旋转的方法
 
 `iOS 8`中弃用了`UIViewController`的所有关于旋转的方法.事实上,是旋转的概念被弃用了.在完全自适应的界面,旋转失去了意义,物理设备的屏幕必须旋转,以确保它在正确的方向,但界面内容本身只需要适当调整.
@@ -21,6 +26,7 @@ override func willTransitionToTraitCollection(newCollection: UITraitCollection,
 
 上述代码用于在设备旋转后改变`collection view`的滚动方向.`iPhone`设备在横屏下`verticalSizeClass`为`.Compact`,而`iPad`设备横竖屏都是`.Regular`.因此上述代码只会在`iPhone`设备横屏时将`collection view`的滚动方向改为垂直滚动,而竖屏时以及`iPad`设备在任意方向下总是保持水平滚动.
 
+<a name="transition coordinator"></a>
 ## transition coordinator
 
 `iOS 7`中引入了`UIViewControllerTransitionCoordinator`协议,用来定制和控制视图控制器之间的过渡效果.`iOS 8`对其进一步扩展,使之可以处理同一视图控制器的`size`和`traitCollection`改变时的情况,例如实现一些动画效果:
@@ -38,6 +44,7 @@ override func willTransitionToTraitCollection(newCollection: UITraitCollection,
 }
 ```
 
+<a name="Resizing Cells on Rotation"></a>
 ## 旋转后调整 cell 的尺寸
 
 例如,对于`UICollectionViewController`,设备旋转后,由于视图控制器的`view`尺寸发生变化,`cell`的`itemSize`可能需要随之调整,这时候可以在`viewWillLayoutSubviews()`方法中进行调整,因为此时视图控制器的`view`已是新尺寸:
@@ -56,7 +63,8 @@ override func viewWillLayoutSubviews() {
 }
 ```
 
-## iPad 设备的旋转效果
+<a name="iPad rotation effects"></a>
+## iPad 设备的旋转处理
 
 如前所述,`iPhone`设备在横屏下`verticalSizeClass`为`.Compact`,竖屏下为`.Regular`.而`iPad`设备横竖屏都是`.Regular`.这意味着`iPad`设备旋转时不会更新布局,也不会调用`willTransitionToTraitCollection(_:withTransitionCoordinator:)`方法.
 
@@ -100,6 +108,7 @@ override func viewWillTransitionToSize(size: CGSize,
 
 当然,上述方案有个问题,只有设备旋转时才会更新到对应的布局约束,而程序启动时并不会调用该方法.因此,对于`iPad`设备,无论横屏还是竖屏状态启动,视图上的布局约束都将会是`IB`中针对`iPad`的`Size Classes`设置的布局约束.不过可以在`viewDidLayoutSubviews()`方法中更新一次布局约束,通过一个`Bool`属性标记下,只在启动时更新一次即可.
 
+<a name="adaptive view"></a>
 ## UIView 的布局自适应
 
 `UIView`并未遵循`UIContentContainer`协议,因此前面介绍的方法只适用于`UIViewController`和`UIPresentationController`.但是`UIView`遵循了`UITraitEnvironment`协议,该协议声明了`traitCollection`属性和`traitCollectionDidChange(_:)`方法,也可以用来响应布局变化.另外,`UIScreen`,`UIWindow`,`UIViewController`,`UIPresentationController`也都采纳了此协议,不过对于视图控制器来说,使用前面介绍的方法可能更为方便.
