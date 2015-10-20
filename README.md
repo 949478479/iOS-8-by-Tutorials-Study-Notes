@@ -12,7 +12,7 @@
 
 下图展示了`presentingViewController`和`presentedViewController`的关系:
 
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Custom-Presentations/Screenshot/Presented%26PresentingControllers.png)
 
 Presenting 即背后的设置界面的视图控制器, Chrome 是介于`presentingViewController`和`presentedViewController`之间的视图,通常是这种半透明的样子,当然也可以自定义.
 
@@ -21,7 +21,7 @@ Presenting 即背后的设置界面的视图控制器, Chrome 是介于`presenti
 
 通过子类化`UIPresentationController`,可以轻松实现下图这样的效果:
 
-![]()
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Custom-Presentations/Screenshot/UIPresentationControllerBasic.png)
 
 #### 核心方法
 
