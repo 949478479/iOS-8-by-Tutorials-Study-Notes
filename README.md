@@ -1,7 +1,10 @@
 # Introducing Presentation Controllers
 
-这一章介绍了`UIAlertController`,`UIPopoverPresentationController`,以及`UISearchController`.
+- [UIAlertController](#UIAlertController)
+- [UIPopoverPresentationController](#UIPopoverPresentationController)
+- [UISearchController](#UISearchController)
 
+<a name="UIAlertController"></a>
 ## UIAlertController
 
 在`iOS 8`之前,使用`UIAlertView`或者`UIActionSheet`来呈现一个弹窗展示一些信息并与用户进行交互.
@@ -34,6 +37,7 @@ alert.popoverPresentationController?.sourceRect = sender.frame
 
 `popoverPresentationController`是`UIPresentationController`的子类.在`iOS 8`中,在幕后都是`UIPresentationController`负责对视图控制器进行呈现.因为只有在`iPad`设备下 action sheet 才会以 popover 呈现,因此其他情况下`popoverPresentationController`属性均为`nil`,配合可选链语法,上述代码可适用所有设备.
 
+<a name="UIPopoverPresentationController"></a>
 ## UIPopoverPresentationController
 
 在`iOS 8`中,`UIPopoverController`被弃用,要呈现一个 popover,可以像下面这样.如果使用 IB, segue 选择 popover presentation 即可.
@@ -104,6 +108,7 @@ func adaptivePresentationStyleForPresentationController(controller: UIPresentati
 }
 ```
 
+<a name="UISearchController"></a>
 ## UISearchController
 
 `iOS 8`新推出了`UISearchController`,用来取代`UISearchDisplayController`.它的优势是完全自适应,而且它还允许使用任意类型的视图控制器展示搜索结果,而不仅仅是`UITableViewController`.
