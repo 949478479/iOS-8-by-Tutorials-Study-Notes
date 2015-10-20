@@ -1,9 +1,12 @@
 # Adaptive View Controller Hierarchies
 
-这一章讲解了如何在视图控制器层级中引入自适应布局,以及`UISplitViewController`的使用.
+- [iPhone 和 iPad 共用 UISplitViewController](#UISplitViewController)
+- [显示占位内容](#custom default view)
+- [处理 disclosure indicators](#Adaptive disclosure indicators)
+- [UISplitViewController 的四种显示模式](#displayMode)
+- [displayModeButtonItem 与返回按钮](#displayModeButtonItem)
 
-`UISplitViewController`现在支持所有设备,而不仅仅只是`iPad`设备.对于普通`iPhone`设备,无论横竖屏都是`compact width`状态,`detail view controller`会以`modal`或者`push`的方式呈现,而对于`iPhone plus`设备,横屏下将是`regular width`,因此`detail view controller`会像在`iPad`设备设备上一样呈现.
-
+<a name="UISplitViewController"></a>
 ## iPhone 和 iPad 共用 UISplitViewController
 
 例如可以像下图这样:
@@ -76,6 +79,7 @@ func splitViewController(splitViewController: UISplitViewController,
 }
 ```
 
+<a name="custom default view"></a>
 ## 显示占位内容
 
 如果`iPhone`设备横屏状态或者`iPad`运行程序,`detail view controller`会直接呈现出来,而这时往往还未提供数据给`detail view controller`呈现,因此其内容一般是空白的.为了更好的用户体验,最好显示一个占位内容.
@@ -85,6 +89,7 @@ func splitViewController(splitViewController: UISplitViewController,
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/EmptyVCOniPhone.png)
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Adaptive-View-Controller-Hierarchies/Screenshot/EmptyVCOniPad.png)
 
+<a name="Adaptive disclosure indicators"></a>
 ## 处理 disclosure indicators 
 
 如下图所示,在横屏状态下,`cell`是不需要箭头标记的,切换到竖屏后,则应显示箭头标记.
@@ -113,6 +118,7 @@ func splitViewController(splitViewController: UISplitViewController,
 
 例如在`iPhone`设备上由横屏过渡到竖屏后,原先在右侧呈现的控制器可能会以导航控制器的栈顶控制器呈现.这时候如果`pop`回上层控制器,应该为`cell`加上右侧的箭头标志以表明点击该`cell`可以跳转.例如可以在该代理方法`tableView(_:willDisplayCell:forRowAtIndexPath:)`中做出对应处理.
 
+<a name="displayMode"></a>
 ## UISplitViewController 的四种显示模式
 
 `splitViewController`的显示模式有四种,可通过`displayMode`属性访问当前的模式.
@@ -139,6 +145,7 @@ UIView.animateWithDuration(0.25, animations: {
 })
 ```
 
+<a name="displayModeButtonItem"></a>
 ## displayModeButtonItem 与返回按钮
 
 `splitViewController`的`displayModeButtonItem()`方法会返回一个用于切换显示模式的`barButtonItem`,可以通过下面这样将其显示到`detail view controller`的导航栏上:
