@@ -187,9 +187,9 @@ public enum PHImageRequestOptionsDeliveryMode : Int {
 public enum PHImageRequestOptionsResizeMode : Int {
     /*  不拉伸。 */
     case None 
-    /*  追求执行效率的拉伸。最终图片尺寸可能和期望支持不太相符。 */
+    /*  追求效率的拉伸。最终图片尺寸可能和期望支持不太相符。 */
     case Fast
-    /*  牺牲效率，最终图片尺寸完全符合期望值。如果设置了 normalizedCropRect 属性，则必须使用该选项。 */
+    /*  牺牲效率，最终图片尺寸完全符合期望值。如果设置了 normalizedCropRect，则必须使用该选项。 */
     case Exact 
 }
 ```
@@ -215,17 +215,17 @@ public func requestImageDataForAsset(asset: PHAsset,
 public func requestPlayerItemForVideo(asset: PHAsset, 
     options: PHVideoRequestOptions?, 
     resultHandler: (AVPlayerItem?, [NSObject : AnyObject]?) -> Void)
-     -> PHImageRequestID
+    -> PHImageRequestID
     
 public func requestExportSessionForVideo(asset: PHAsset, 
     options: PHVideoRequestOptions?, exportPreset: String, 
     resultHandler: (AVAssetExportSession?, [NSObject : AnyObject]?) -> Void)
-     -> PHImageRequestID
+    -> PHImageRequestID
     
 public func requestAVAssetForVideo(asset: PHAsset, 
     options: PHVideoRequestOptions?, 
     resultHandler: (AVAsset?, AVAudioMix?, [NSObject : AnyObject]?) -> Void)
-     -> PHImageRequestID
+    -> PHImageRequestID
 ```
 
 #### PHCachingImageManager
