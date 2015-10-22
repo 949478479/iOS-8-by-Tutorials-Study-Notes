@@ -14,3 +14,7 @@
 (https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/tree/Introducing-Presentation-Controllers)
 - [Custom Presentations]
 (https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Custom-Presentations/README.md)
+
+## Major New Features
+
+- [Beginning Photos](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/tree/Beginning-Photos)
