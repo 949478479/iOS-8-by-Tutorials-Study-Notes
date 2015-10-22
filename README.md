@@ -66,7 +66,8 @@ PHPhotoLibrary.requestAuthorization { state in
 另外，iOS 8 中`UIApplication`新增了`UIApplicationOpenSettingsURLString`这个字符串，可以用来打开设置界面：
 
 ```swift
-UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+UIApplication.sharedApplication().openURL(
+	NSURL(string: UIApplicationOpenSettingsURLString)!)
 ```
 
 <a name="Fetching objects"></a>
@@ -82,7 +83,8 @@ PHAsset.fetchAssetsWithMediaType(.Image, options: nil)
 
 ```swift
 let options = PHFetchOptions()
-options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)] // 按创建日期排序.
+// 按创建日期排序.
+options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)] 
 options.predicate = /* 指定谓词进行过滤. */
 options.fetchLimit = 233 // 限制返回结果最大数量.
 options.includeHiddenAssets = true // 包含隐藏资源.
@@ -173,7 +175,7 @@ public enum PHImageRequestOptionsDeliveryMode : Int {
     case Opportunistic 
     /*  只提供最终的高质量图片，不考虑耗时问题。这也是同步模式下的唯一选项。 */
     case HighQualityFormat 
-    /*  不考虑图片质量，只求速度。因此闭包只会调用一次，如果高质量图片不存在，就提供快速生成的低质量图片。*/
+    /*  尽可能地提高效率。因此闭包只调用一次，如果高质量图片不存在，就提供快速生成的低质量图片。*/
     case FastFormat 
 }
 ```
@@ -187,7 +189,7 @@ public enum PHImageRequestOptionsResizeMode : Int {
     case None 
     /*  追求执行效率的拉伸。最终图片尺寸可能和期望支持不太相符。 */
     case Fast
-    /*  牺牲效率，最终图片尺寸完全符合期望值。如果设置了裁剪，即 normalizedCropRect 属性，则必须使用该选项。 */
+    /*  牺牲效率，最终图片尺寸完全符合期望值。如果设置了 normalizedCropRect 属性，则必须使用该选项。 */
     case Exact 
 }
 ```
@@ -212,15 +214,18 @@ public func requestImageDataForAsset(asset: PHAsset,
 ```swift
 public func requestPlayerItemForVideo(asset: PHAsset, 
     options: PHVideoRequestOptions?, 
-    resultHandler: (AVPlayerItem?, [NSObject : AnyObject]?) -> Void) -> PHImageRequestID
+    resultHandler: (AVPlayerItem?, [NSObject : AnyObject]?) -> Void)
+     -> PHImageRequestID
     
 public func requestExportSessionForVideo(asset: PHAsset, 
     options: PHVideoRequestOptions?, exportPreset: String, 
-    resultHandler: (AVAssetExportSession?, [NSObject : AnyObject]?) -> Void) -> PHImageRequestID
+    resultHandler: (AVAssetExportSession?, [NSObject : AnyObject]?) -> Void)
+     -> PHImageRequestID
     
 public func requestAVAssetForVideo(asset: PHAsset, 
     options: PHVideoRequestOptions?, 
-    resultHandler: (AVAsset?, AVAudioMix?, [NSObject : AnyObject]?) -> Void) -> PHImageRequestID
+    resultHandler: (AVAsset?, AVAudioMix?, [NSObject : AnyObject]?) -> Void)
+     -> PHImageRequestID
 ```
 
 #### PHCachingImageManager
