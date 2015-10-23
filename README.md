@@ -33,15 +33,19 @@
 
 上面的两个集合类型的模型不持有其模型元素，都是通过类方法来获取模型对象。获取一个`PHAssetCollection`对象中的所有`PHAsset`对象，可使用`PHAsset`的类方法`fetchAssetsInAssetCollection(_:options:)`获取；获取一个`PHCollectionList`对象中的所有`PHAssetCollection`对象，可使用`PHAssetCollection`的类方法`fetchCollectionsInCollectionList(_:options:)`获取；获取`PHAsset`对象对应的图像资源，必须使用`PHImageManager`另行加载图像内容。
 
-还可以通过设置`PHFetchOptions`选项来指定要抓取哪些模型对象，抓取结果如何排序，数量限制，以及结果变化时是否通知之类的设定。
-
 #### PHFetchResult
 
 使用`PHObject`子类的类方法来获取图像资源模型对象时，其结果会用一个`PHFetchResult`对象表示。它是对应模型对象的有序集合，例如，使用`PHAsset`类获取模型对象时，该集合中元素为`PHAsset`对象，而使用`PHAssetCollection`类获取模型对象时，集合中的元素则是`PHAssetCollection`。该类有一些非常类似`NSArray`的方法。但和普通数组不同，它会智能管理内存以及懒加载，这意味着抓取并遍历大量模型对象也不会大量消耗内存。另外，它是线程安全的。
 
+#### PHFetchOptions
+
+可以通过设置`PHFetchOptions`选项来指定要抓取哪些模型对象，抓取结果如何排序，数量限制，以及结果变化时是否通知之类的设定。
+
 #### PHImageManager
 
 `PHImageManager`的单例负责加载图像资源模型对应的图像内容，还可指明目标图像尺寸，缩放模式，以及其他一些高级设置。它异步处理加载、缓存、加工图像以及重用图像的任务。另外，还有个子类`PHCachingImageManager`，可以预加载图像内容到内存，对于提高 table view 或者 collection view 的流畅性十分有用。
+
+#### PHImageRequestOptions 和 PHVideoRequestOptions
 
 可以通过`PHImageRequestOptions`和`PHVideoRequestOptions`对象来设置加载图像时的高级设定，例如是否同步执行、图像版本、图像质量、缩放模式、裁剪区域、是否加载 iCloud 端数据，甚至还可以传入闭包来监听下载进度。
 
