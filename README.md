@@ -2,15 +2,16 @@
 
 在 iOS 8，开发者迎来了全新的`Photos`框架，它提供了与用户照片库交互的所有功能，用于取代`AssetsLibrary`框架，后者也在 iOS 9 正式弃用了。`Photos`框架包括大量简洁的特性，让开发者能访问并编辑图像，无论是单张图片还是整个相册。
 
-- [概览](#overview)
+- [Photo 框架的主要功能](#overview)
+- [获取图像资源模型与加载图像内容](#Fetching objects and loading content)
+- [修改图像资源模型与编辑图像内容](#Requesting changes and editing content)
+- [监听改变](#Observing changes)
 - [获取相册权限](#requestAuthorization)
 - [获取图像资源模型](#Fetching objects)
 - [加载图像资源内容](#Loading content)
 
 <a name="overview"></a>
-## 概览
-
-#### Photo 框架的主要功能
+## Photo 框架的主要功能
 
 - 获取资源模型：可以轻松获取代表图像资源、集合或者集合列表的模型对象，同时保证性能和隐私。
 - 加载以及缓存图像资源内容：`Photo`框架能处理图像资源内容的下载和缓存任务，并提供预加载的功能，能很好地配合 table view 或者 collection view。
@@ -19,17 +20,24 @@
 - 监听改变：可以注册通知，当照片库发生变化时，会得到通知，从而更新界面。无论改变是由自己的应用还是其他应用造成的。
 - 使用系统相册的高级功能：可以访问系统相册中的所有东西，包括智能专辑，时刻，iCloud 照片流，并能识别 burst shots，全景图像，和慢动作视频。
 
+<a name="Fetching objects and loading content"></a>
+## 获取图像资源模型与加载图像内容
+
+下面这些类可用于获取图像资源模型和加载图像资源内容：
+
 #### PHObject
 
 `Photos`框架中的图像资源模型都用继承自抽象基类`PHObject`的模型类表示。它们是轻量的模型对象，只包含描述性的元数据，而不包括图像资源内容，具体的图像数据必须另行加载。所有的模型都是不可变的，想要修改必须创建对应的修改请求。这些模型类提供了一些类方法，用于获取资源模型对象。
 
 其子类如下：
 
-- `PHAsset`：代表一个单一的图像资源，例如一张图片或者一部视频，可以是本地的，也可以是 iCloud 上的。
+- `PHAsset`：代表单一的图像资源，例如一张图片或者一部视频，可以是本地的，也可以是 iCloud 上的。
 - `PHCollection`：该类也是个抽象类，应该使用其子类`PHAssetCollection`和`PHCollectionList`。
-- `PHAssetCollection`：代表一个有序的图像资源模型集合，其内容是`PHAsset`。
-- `PHCollectionList`：代表一个有序的集合的集合，其内容是`PHAssetCollection`或者其他`PHCollectionList`。
-- `PHObjectPlaceholder`：代表一个占位模型。
+- `PHAssetCollection`：代表有序的图像资源模型集合，类似相册，其内容是`PHAsset`。
+- `PHCollectionList`：代表有序的集合的集合，类似相册文件夹，其内容是`PHAssetCollection`或其他`PHCollectionList`。
+- `PHObjectPlaceholder`：代表一个占位模型，用于创建新模型时。
+
+`PHAssetCollection`和`PHCollectionList`还可以创建临时的集合来方便地记录一些模型。
 
 上面的两个集合类型的模型不持有其模型元素，都是通过类方法来获取模型对象。获取一个`PHAssetCollection`对象中的所有`PHAsset`对象，可使用`PHAsset`的类方法`fetchAssetsInAssetCollection(_:options:)`获取；获取一个`PHCollectionList`对象中的所有`PHAssetCollection`对象，可使用`PHAssetCollection`的类方法`fetchCollectionsInCollectionList(_:options:)`获取；获取`PHAsset`对象对应的图像资源，必须使用`PHImageManager`另行加载图像内容。
 
@@ -48,6 +56,58 @@
 #### PHImageRequestOptions 和 PHVideoRequestOptions
 
 可以通过`PHImageRequestOptions`和`PHVideoRequestOptions`对象来设置加载图像时的高级设定，例如是否同步执行、图像版本、图像质量、缩放模式、裁剪区域、是否加载 iCloud 端数据，甚至还可以传入闭包来监听下载进度。
+
+<a name="Requesting changes and editing content"></a>
+## 修改图像资源模型与编辑图像内容
+
+下面这些类可用于改变照片库和编辑图像：
+
+#### PHPhotoLibrary
+
+`PHPhotoLibrary`是代表用户照片库的全局共享对象，通过该对象来改变照片库，可对图像或者相册进行添加、删除以及编辑。还可以注册改变通知，从而在照片库发生改变时得到通知，无论这改变是应用程序本身造成的还是其他应用造成的。所有的修改都是异步执行的（也可以使用同步），而且必须在其闭包中执行。
+
+#### PHAssetChangeRequest
+
+可通过`PHAssetChangeRequest`的类方法创建一个针对`PHAsset`的请求，通过该请求来创建、编辑、删除一个`PHAsset`对象。该请求有一些和`PHAsset`对象的属性对应的属性，通过这些属性来修改`PHAsset`对象。例如，可以通过`favorite`属性修改一个`PHAsset`对象的`favorite`属性。
+
+#### PHAssetCollectionChangeRequest 和 PHCollectionListChangeRequest
+
+分别用来创建相应的请求来创建、编辑、删除`PHAssetCollection`和`PHCollectionList`，以及移动合并等操作。
+
+#### PHContentEditingInput
+
+可以通过`PHAsset`对象的`requestContentEditingInputWithOptions(_:completionHandler:)`方法获取该对象，它提供了被编辑的`PHAsset`对象的一些信息和元数据，以及用于预览的图片等。使用该对象实例化一个`PHContentEditingOutput`对象。
+
+#### PHContentEditingOutput
+
+该对象用来表示编辑的结果。将记录编辑信息的数据提供给其`adjustmentData`属性，然后将编辑过的图像数据写入到`renderedContentURL`属性指定的 URL，最后将该对象赋值给`PHAssetChangeRequest`对象的`contentEditingOutput`属性。
+
+#### PHAdjustmentData
+
+该对象表示对图像进行编辑的记录数据。例如，使用其`formatIdentifier`属性记录应用标识，如“com.example.myApp”；使用其`formatVersion`属性记录此次编辑的版本号，如“1.0”；使用其`data`参数记录此次编辑的一些参数信息，例如通过将各种滤镜参数信息保存为一个字典赋值给该属性。在编辑图像时，可以通过检索`PHContentEditingInput`对象的`adjustmentData`属性来判断应用程序是否可以重现该图像上次的编辑状态，如果可以支持，那么用户就可以恢复或者修改上次的编辑状态。
+
+<a name="Observing changes"></a>
+## 监听改变
+
+下面这些类提供了照片库的改变详情：
+
+#### PHChange
+
+通过`PHPhotoLibrary`注册改变通知后，就可以在通知回调方法中得到`PHChange`对象。可以通过该对象的`changeDetailsForObject(_:)`和`changeDetailsForFetchResult(_:)`方法进一步获取改变详情。
+
+#### PHObjectChangeDetails
+
+利用`PHChange`对象的`changeDetailsForObject(_:)`方法，可以获取先前获取到的`PHAsset`、`PHAssetCollection`、`PHCollectionList`对象的改变详情，其返回值即是`PHObjectChangeDetails`对象。如果没有任何改变，那么返回值会为`nil`。可通过该对象获取改变前后的模型对象，判断该模型对象是否已被从照片库移除等。如果模型对象是`PHAsset`，还可以通过`assetContentChanged`属性判断其图像内容是否发生改变，从而加载新图像。
+
+`PHObjectChangeDetails`仅仅体现模型本身属性的变化，例如`PHAsset`对象的各种元数据属性，`PHAssetCollection`的标题之类。若想获取`PHAssetCollection`或`PHCollectionList`这种集合模型中元素的添加移除移动等改变，需要使用`PHChange`对象的`changeDetailsForFetchResult(_:)`方法。
+
+#### PHFetchResultChangeDetails
+
+利用`PHChange`对象的`changeDetailsForFetchResult(_:)`方法，可获取到`PHFetchResult`对象的改变详情，其返回值即是`PHFetchResultChangeDetails`对象。如果没有任何改变，那么返回值会为`nil`。
+
+可通过该对象获取改变前后的`PHFetchResult`对象。如果其`hasIncrementalChanges`属性为`true`，还可获取到发生移除、插入、改变的索引以及涉及到的模型对象。该属性与用`PHAsset`、`PHAssetCollection`、`PHCollectionList`的类方法获取模型时传入的`PHFetchOptions`参数对象有关，若该参数对象的属性`wantsIncrementalChangeDetails`为`true`（默认为`true`），则该属性即为`true`，也就是说默认情况下该属性会为`true`。如果该属性为`true`，更新 table view 或者 collection view 时就可以针对变化的索引进行操作，否则，就只能用改变后的`PHFetchResult`对象重新 reloadData。
+
+配合 table view 或者 collection view 时，若针对变化索引进行操作，应符合一定顺序。一定要先移除，再插入，然后更新内容变化的单元格的内容，最后通过判断`hasMoves`属性来判断是否有索引发生了移动，若是则使用`enumerateMovesWithBlock(_:)`方法遍历发生移动的索引并对相应单元格进行移动。
 
 <a name="requestAuthorization"></a>
 ## 获取相册权限
