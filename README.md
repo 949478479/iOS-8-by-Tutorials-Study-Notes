@@ -3,12 +3,13 @@
 在 iOS 8，开发者迎来了全新的`Photos`框架，它提供了与用户照片库交互的所有功能，用于取代`AssetsLibrary`框架，后者也在 iOS 9 正式弃用了。
 
 - [Photo 框架的主要功能](#overview)
-- [获取图像资源模型与加载图像内容](#Fetching objects and loading content)
-- [修改图像资源模型与编辑图像内容](#Requesting changes and editing content)
-- [监听改变](#Observing changes)
+- [概览：获取图像资源模型与加载图像内容](#Fetching objects and loading content)
+- [概览：修改图像资源模型与编辑图像内容](#Requesting changes and editing content)
+- [概览：监听改变](#Observing changes)
 - [获取相册权限](#requestAuthorization)
 - [获取图像资源模型](#Fetching objects)
 - [加载图像资源内容](#Loading content)
+- [修改图像资源模型](#changes objects)
 
 <a name="overview"></a>
 ## Photo 框架的主要功能
@@ -159,8 +160,11 @@ options.includeHiddenAssets = true // 包含隐藏资源.
 可通过下面的方式获取用户自己创建的相册：
 
 ```swift
-// 获取所有用户创建的相册，其结果为 PHFetchResult 对象，该集合中的元素为 PHCollectionList 对象.
-let userAlbums = PHCollectionList.fetchTopLevelUserCollectionsWithOptions(nil)
+// 获取所有用户创建的相册，其结果为 PHFetchResult 对象，该集合中的元素为 PHAssetCollection 对象.
+let userAlbums = PHAssetCollection.fetchTopLevelUserCollectionsWithOptions(nil)
+
+// 也可以这样
+// PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .AlbumRegular, options: nil)
 
 // 取出其中某个相册，它是个 PHAssetCollection 对象.
 let userAlbum = userAlbums[233]
@@ -179,7 +183,7 @@ let favoritesAlbum = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum
 使用`localizedTitle`属性可获取相册名称。
 
 使用`estimatedAssetCount`属性可提前获取相册中图像资源的估计数量，该值可能是`NSNotFound`，想获取确切数量可以通过` fetchAssetsInAssetCollection(_:options:)`方法获取全部模型然后查看返回结果的`count`属性。
-
+                        
 <a name="Loading content"></a>
 ## 加载图像资源内容
 
@@ -317,3 +321,29 @@ public func stopCachingImagesForAllAssets()
 ```
 
 该类还有个`allowsCachingHighQualityImages`属性，默认为`true`。缓存高质量的图片也意味着更高的性能耗费，根据官方文档的建议，类似使用 collection view 展示图片缩略图这种情况，应该关闭此属性，提升性能。
+
+<a name="changes objects"></a>
+## 修改图像资源模型
+
+#### 创建相册
+
+可以类似下面这样创建一个相册：
+
+```swift
+var assetPlaceholder: PHObjectPlaceholder!
+PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+	let changeRequset = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle("相册名字")
+    assetPlaceholder = changeRequset.placeholderForCreatedAssetCollection // 用占位对象引用新创建的相册.
+}, completionHandler: { (success, error) -> Void in
+    guard success else {
+        print("Failed to create album.\n", error)
+        return
+    }
+    dispatch_async(dispatch_get_main_queue()) { // 闭包会在任意线程调用.
+    	// 使用占位对象的 localIdentifier 获取创建好的对应相册.
+    	let collections = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers(
+    		[assetPlaceholder.localIdentifier], options: nil)
+    	// 更新 UI...
+    }
+})
+```
