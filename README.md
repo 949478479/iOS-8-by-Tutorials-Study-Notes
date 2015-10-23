@@ -1,6 +1,6 @@
 # Beginning Photos
 
-在 iOS 8，开发者迎来了全新的`Photos`框架，它提供了与用户照片库交互的所有功能，用于取代`AssetsLibrary`框架，后者也在 iOS 9 正式弃用了。`Photos`框架包括大量简洁的特性，让开发者能访问并编辑图像，无论是单张图片还是整个相册。
+在 iOS 8，开发者迎来了全新的`Photos`框架，它提供了与用户照片库交互的所有功能，用于取代`AssetsLibrary`框架，后者也在 iOS 9 正式弃用了。
 
 - [Photo 框架的主要功能](#overview)
 - [获取图像资源模型与加载图像内容](#Fetching objects and loading content)
