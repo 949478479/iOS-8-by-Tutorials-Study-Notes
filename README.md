@@ -10,6 +10,7 @@
 - [获取图像资源模型](#Fetching objects)
 - [加载图像资源内容](#Loading content)
 - [修改图像资源模型](#changes objects)
+- [修改图像资源内容](#editing content)
 
 <a name="overview"></a>
 ## Photo 框架的主要功能
@@ -22,7 +23,7 @@
 - 使用系统相册的高级功能：可以访问系统相册中的所有东西，包括智能专辑，时刻，iCloud 照片流，并能识别 burst shots，全景图像，和慢动作视频。
 
 <a name="Fetching objects and loading content"></a>
-## 获取图像资源模型与加载图像内容
+## 概览：获取图像资源模型与加载图像内容
 
 下面这些类可用于获取图像资源模型和加载图像资源内容：
 
@@ -59,7 +60,7 @@
 可以通过`PHImageRequestOptions`和`PHVideoRequestOptions`对象来设置加载图像时的高级设定，例如是否同步执行、图像版本、图像质量、缩放模式、裁剪区域、是否加载 iCloud 端数据，甚至还可以传入闭包来监听下载进度。
 
 <a name="Requesting changes and editing content"></a>
-## 修改图像资源模型与编辑图像内容
+## 概览：修改图像资源模型与编辑图像内容
 
 下面这些类可用于改变照片库和编辑图像：
 
@@ -88,7 +89,7 @@
 该对象表示对图像进行编辑的记录数据。例如，使用其`formatIdentifier`属性记录应用标识，如“com.example.myApp”；使用其`formatVersion`属性记录此次编辑的版本号，如“1.0”；使用其`data`参数记录此次编辑的一些参数信息，例如通过将各种滤镜参数信息保存为一个字典赋值给该属性。在编辑图像时，可以通过检索`PHContentEditingInput`对象的`adjustmentData`属性来判断应用程序是否可以重现该图像上次的编辑状态，如果可以支持，那么用户就可以恢复或者修改上次的编辑状态。
 
 <a name="Observing changes"></a>
-## 监听改变
+## 概览：监听改变
 
 下面这些类提供了照片库的改变详情：
 
@@ -327,14 +328,12 @@ public func stopCachingImagesForAllAssets()
 
 #### 创建相册
 
-可以类似下面这样创建一个相册：
-
 ```swift
 var assetPlaceholder: PHObjectPlaceholder!
-PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+PHPhotoLibrary.sharedPhotoLibrary().performChanges({ 
 	let changeRequset = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle("相册名字")
     assetPlaceholder = changeRequset.placeholderForCreatedAssetCollection // 用占位对象引用新创建的相册.
-}, completionHandler: { (success, error) -> Void in
+}, completionHandler: { success, error in
     guard success else {
         print("Failed to create album.\n", error)
         return
@@ -346,4 +345,108 @@ PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
     	// 更新 UI...
     }
 })
+```
+
+#### 添加图像资源模型
+
+```swift
+var assetPlaceholder: PHObjectPlaceholder!
+PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+	// 利用一张图片创建 PHAssetChangeRequest.
+    let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(anImage)
+    // 获取该请求的占位对象.
+    assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
+    // 针对一个相册创建 PHAssetCollectionChangeRequest.
+	let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: anAlbum)!
+	// 通过占位对象添加到相册.
+	albumChangeRequest.addAssets([assetPlaceholder])
+}, completionHandler: { _ in
+	// 完成后可根据占位对象的 localIdentifier 获取到刚刚添加的 PHAsset 对象,此处即是 fetchResult[0].
+	let fetchResult = PHAsset.fetchAssetsWithLocalIdentifiers([assetPlaceholder.localIdentifier], options: nil)
+})
+```
+
+#### 编辑图像资源模型元数据
+
+```swift
+PHPhotoLibrary.sharedPhotoLibrary().performChanges({ 
+    let request = PHAssetChangeRequest(forAsset: anAsset) // 创建请求.
+    request.favorite = !anAsset.favorite // 修改请求对应的属性.
+}, completionHandler: nil)
+```
+
+#### 删除图像资源模型
+
+```swift
+PHPhotoLibrary.sharedPhotoLibrary().performChanges({ 
+    PHAssetChangeRequest.deleteAssets([anAsset])
+}, completionHandler: nil)
+```
+
+另外，进行修改前最好通过`canPerformEditOperation(_:)`方法判断下能否支持该操作。操作分为以下三种：
+
+```swift
+@available(iOS 8.0, *)
+public enum PHAssetEditOperation : Int {
+    case Delete 	// 删除操作.
+    case Content 	// 编辑内容.
+    case Properties // 编辑元数据.
+}
+```
+
+<a name="editing content"></a>
+## 修改图像资源内容
+
+可使用`PHAsset`对象的如下方法。调用此方法时，`Photo`框架会加载图像内容，加载完成会调用`completionHandler` 闭包。
+
+```swift
+public func requestContentEditingInputWithOptions(options: PHContentEditingInputRequestOptions?, 		
+	completionHandler: (PHContentEditingInput?, [NSObject : AnyObject]) -> Void) 
+	-> PHContentEditingInputRequestID
+```
+
+该方法会返回一个`PHContentEditingInputRequestID`，可配合`cancelContentEditingInputRequest(:_)`方法取消一个加载中的编辑请求。
+
+#### PHContentEditingInputRequestOptions
+
+可通过该参数对象设置`canHandleAdjustmentData`闭包来针对`PHAdjustmentData`对象进行判断，通常可以比较其`formatIdentifier`和`formatVersion`属性，如果应用能够重现上次的编辑状态，返回`true`，系统就会提供原图。如果返回`false`，系统就会提供上次编辑过后的图片。
+
+还可以设置`networkAccessAllowed`属性决定是否加载 iCloud 端的图片，默认是`true`。
+
+另外还可以利用`progressHandler`闭包处理下载进度。
+
+#### PHContentEditingInput
+
+可通过该对象的`displaySizeImage`属性获取供编辑展示用的图片，通过`fullSizeImageURL`获取完全尺寸的原图，待编辑结束后，将编辑信息应用于原图，然后创建`PHContentEditingOutput`并于`PHPhotoLibrary`的闭包中提交。
+
+#### PHContentEditingOutput
+
+该对象一般会利用`PHContentEditingInput`对象创建，只有`adjustmentData`和`renderedContentURL`两个属性。
+
+`adjustmentData`用于设置此次编辑信息。`renderedContentURL`用于提供 URL，供写入编辑后的二进制图像数据。
+
+#### 用法示例
+
+```swift
+// 用 PHAsset 对象创建请求.
+anAsset.requestContentEditingInputWithOptions(nil) { input, info in
+
+	/*	用于记录此次编辑信息的对象,主要为了之后能识别此次编辑情况,从而恢复操作之类的.
+		一般会使用应用标识,版本号,以及一个字典之类的对象的二进制数据.
+		例如对图像进行了滤镜处理后,可用字典记录滤镜处理的各项参数设置.  */
+    let adjustmentData = PHAdjustmentData(formatIdentifier: "com.cjyh.xxx", formatVersion: "1.0", data: aData)
+    
+    // 利用 PHContentEditingInput 对象创建 PHContentEditingOutput 对象.
+    let contentEditingOutput = PHContentEditingOutput(contentEditingInput: input!)
+    contentEditingOutput.adjustmentData = adjustmentData
+    
+    // 将编辑后的图像序列化为二进制数据,写入 PHContentEditingOutput 对象的 renderedContentURL 属性指定的 URL.
+    UIImageJPEGRepresentation(anImage, 1.0)!.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
+
+	// 提交更改.
+    PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+        let request = PHAssetChangeRequest(forAsset: stitch)
+        request.contentEditingOutput = contentEditingOutput
+    }, completionHandler: nil)
+}
 ```
