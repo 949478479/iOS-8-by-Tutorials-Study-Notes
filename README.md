@@ -11,7 +11,7 @@
 - [加载图像资源内容](#Loading content)
 - [修改图像资源模型](#changes objects)
 - [修改图像资源内容](#editing content)
-- [监听改变](#Observing changes)
+- [监听改变](#observing changes)
 
 <a name="overview"></a>
 ## Photo 框架的主要功能
@@ -110,7 +110,7 @@
 
 可通过该对象获取改变前后的`PHFetchResult`对象。如果其`hasIncrementalChanges`属性为`true`，还可获取到发生移除、插入、改变的索引以及涉及到的模型对象。该属性与用`PHAsset`、`PHAssetCollection`、`PHCollectionList`的类方法获取模型时传入的`PHFetchOptions`参数对象有关，若该参数对象的属性`wantsIncrementalChangeDetails`为`true`（默认为`true`），则该属性即为`true`，也就是说默认情况下该属性会为`true`。如果该属性为`true`，更新 table view 或者 collection view 时就可以针对变化的索引进行操作，否则，就只能用改变后的`PHFetchResult`对象重新 reloadData。
 
-配合 table view 或者 collection view 时，若针对变化索引进行操作，应符合一定顺序。一定要先移除，再插入，然后更新内容变化的单元格的内容，最后通过判断`hasMoves`属性来判断是否有索引发生了移动，若是则使用`enumerateMovesWithBlock(_:)`方法遍历发生移动的索引并对相应单元格进行移动。
+配合 table view 或者 collection view 时，若针对变化索引进行操作，应符合一定顺序。一定要先移除单元格，再插入单元格，然后更新内容变化的单元格，最后通过判断`hasMoves`属性来判断是否有索引发生了移动，若是则使用`enumerateMovesWithBlock(_:)`方法遍历发生移动的索引并对相应单元格进行移动。
 
 <a name="requestAuthorization"></a>
 ## 获取相册权限
@@ -465,7 +465,7 @@ anAsset.requestContentEditingInputWithOptions(nil) { input, _ in
 }
 ```
 
-<a name="Observing changes"></a>
+<a name="observing changes"></a>
 ## 监听改变
 
 可以通过`PHPhotoLibrary`注册通知监听照片库的变化，无论是应用内造成的改变还是其他应用造成的改变，都会得到通知。
@@ -525,4 +525,4 @@ public func changeDetailsForFetchResult(object: PHFetchResult) -> PHFetchResultC
 
 配合 table view 或者 collection view 时，若`hasIncrementalChanges`属性为`false`，那么此时只能根据`fetchResultAfterChanges`获取改变后的`PHFetchResult`，然后 reloadData。
 
-若`hasIncrementalChanges`属性为`true`，那么可利用上述六个属性针对特定的索引和单元格更新 UI。更新 UI 的操作顺序必须是先移除被移除的单元格，再插入新插入的单元格，然后更新内容变化的单元格的内容，最后再通过`hasMoves`属性判断是否有移动的情况，若是则进一步利用`enumerateMovesWithBlock(_:)`方法遍历发生移动的索引，并更新对应的单元格。
+若`hasIncrementalChanges`属性为`true`，那么可利用上述六个属性针对特定的索引和单元格更新 UI。更新 UI 的操作顺序必须是先移除被移除的单元格，再插入新插入的单元格，然后更新内容变化的单元格，最后再通过`hasMoves`属性判断是否有移动的情况，若是则进一步利用`enumerateMovesWithBlock(_:)`方法遍历发生移动的索引，并移动对应的单元格。
