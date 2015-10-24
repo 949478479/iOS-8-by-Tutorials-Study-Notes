@@ -17,4 +17,4 @@
 
 ## Major New Features
 
-- [Beginning Photos](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/tree/Beginning-Photos)
+- [Photos Framework](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/tree/Photos-Framework)
