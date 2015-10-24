@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vby-9r-aT6">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <scenes>
+        <!--Collection-->
+        <scene sceneID="hjJ-tR-nkc">
+            <objects>
+                <collectionViewController id="gDf-J5-ToE" customClass="AssetsViewController" customModule="Stitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="T3d-Kr-kQS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="M4M-b2-evu">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AssetCell" id="hFx-B0-hpl" customClass="AssetCell" customModule="Stitch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rWN-kh-qsQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        </imageView>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZn-23-NWH" customClass="CheckMark" customModule="Stitch" customModuleProvider="target">
+                                            <rect key="frame" x="50" y="50" width="30" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Pas-8R-QN4"/>
+                                                <constraint firstAttribute="width" constant="30" id="ZX8-js-417"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="rWN-kh-qsQ" firstAttribute="leading" secondItem="hFx-B0-hpl" secondAttribute="leading" id="7bJ-WE-cYI"/>
+                                    <constraint firstAttribute="trailing" secondItem="HZn-23-NWH" secondAttribute="trailing" id="CPy-Iq-gQM"/>
+                                    <constraint firstAttribute="bottom" secondItem="HZn-23-NWH" secondAttribute="bottom" id="aYX-rG-VSA"/>
+                                    <constraint firstItem="rWN-kh-qsQ" firstAttribute="top" secondItem="hFx-B0-hpl" secondAttribute="top" id="bDj-Qy-fbr"/>
+                                    <constraint firstAttribute="trailing" secondItem="rWN-kh-qsQ" secondAttribute="trailing" id="bPK-j2-q9l"/>
+                                    <constraint firstAttribute="bottom" secondItem="rWN-kh-qsQ" secondAttribute="bottom" id="lpY-Qg-p3B"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="checkMark" destination="HZn-23-NWH" id="cn9-FB-bgT"/>
+                                    <outlet property="imageView" destination="rWN-kh-qsQ" id="gSx-ax-hbB"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <variation key="widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="1" y="0.0" width="320" height="480"/>
+                        </variation>
+                        <connections>
+                            <outlet property="dataSource" destination="gDf-J5-ToE" id="wgN-vV-9L2"/>
+                            <outlet property="delegate" destination="gDf-J5-ToE" id="eTQ-rX-NaY"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Collection" id="jve-6X-ZV4"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n4K-On-vrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113" y="474"/>
+        </scene>
+        <!--Select Photos-->
+        <scene sceneID="t25-8R-8KK">
+            <objects>
+                <tableViewController id="ffF-Rj-Nf8" customClass="AssetCollectionsViewController" customModule="Stitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="G8p-hv-oBV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AssetCollectionCell" textLabel="6pI-dV-PVx" detailTextLabel="lht-cx-kGA" style="IBUITableViewCellStyleValue1" id="ZnT-3J-lvp">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZnT-3J-lvp" id="GHI-DK-ldS">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6pI-dV-PVx">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lht-cx-kGA">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="gDf-J5-ToE" kind="show" id="7er-HE-SQU"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <variation key="widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="1" y="0.0" width="320" height="480"/>
+                        </variation>
+                        <connections>
+                            <outlet property="dataSource" destination="ffF-Rj-Nf8" id="sMT-M4-O1f"/>
+                            <outlet property="delegate" destination="ffF-Rj-Nf8" id="m5b-Jd-umO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Photos" id="ndq-vw-VgL">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="smb-U3-pM2"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ei8-HO-hUu">
+                            <connections>
+                                <action selector="cancelPressed:" destination="ffF-Rj-Nf8" id="Rlc-Jl-Ac2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="xS2-L2-GIO">
+                            <connections>
+                                <action selector="donePressed:" destination="ffF-Rj-Nf8" id="ukH-bI-wU9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f2t-Eb-hH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406.5" y="474"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tIg-m6-mif">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mlY-97-VfH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="89Q-1V-hmt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ffF-Rj-Nf8" kind="relationship" relationship="rootViewController" id="bFS-1C-Cm9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FKE-M5-JOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-307.5" y="474"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8j2-og-Pfb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vby-9r-aT6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YxV-Ia-1ne">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Yys-VZ-VbJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="mPw-Rc-NjV" kind="relationship" relationship="rootViewController" id="b2P-Ra-0tG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dp-BL-wBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-696" y="-1125"/>
+        </scene>
+        <!--Stitch-->
+        <scene sceneID="Jfd-Ey-36z">
+            <objects>
+                <viewController id="ZMU-5c-HCI" customClass="StitchDetailViewController" customModule="Stitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F9l-oF-jM6"/>
+                        <viewControllerLayoutGuide type="bottom" id="jSo-kW-Oeh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3yF-Om-Hf5">
+                        <rect key="frame" x="0.0" y="44" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x5e-VQ-o65">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUG-Rz-h2G">
+                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wPS-bD-MeS"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3ox-aQ-foq"/>
+                                    <barButtonItem title="Favorite" id="1He-jx-cMK">
+                                        <connections>
+                                            <action selector="favoritePressed:" destination="ZMU-5c-HCI" id="apZ-QY-QtR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jgt-QY-aa2"/>
+                                    <barButtonItem systemItem="trash" id="ELB-Nx-GrE">
+                                        <connections>
+                                            <action selector="deletePressed:" destination="ZMU-5c-HCI" id="bOC-i9-L8u"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x5e-VQ-o65" firstAttribute="leading" secondItem="3yF-Om-Hf5" secondAttribute="leading" id="5Rh-Uf-pax"/>
+                            <constraint firstItem="QUG-Rz-h2G" firstAttribute="leading" secondItem="3yF-Om-Hf5" secondAttribute="leading" id="5xc-GV-R3h"/>
+                            <constraint firstAttribute="trailing" secondItem="x5e-VQ-o65" secondAttribute="trailing" id="EQ5-Tz-P9v"/>
+                            <constraint firstItem="jSo-kW-Oeh" firstAttribute="top" secondItem="QUG-Rz-h2G" secondAttribute="bottom" id="FhV-z7-k8x"/>
+                            <constraint firstAttribute="trailing" secondItem="QUG-Rz-h2G" secondAttribute="trailing" id="hzq-fs-GLQ"/>
+                            <constraint firstItem="QUG-Rz-h2G" firstAttribute="top" secondItem="x5e-VQ-o65" secondAttribute="bottom" id="n5q-YW-tbT"/>
+                            <constraint firstItem="x5e-VQ-o65" firstAttribute="top" secondItem="F9l-oF-jM6" secondAttribute="bottom" id="s6T-j6-jon"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Stitch" id="gHZ-By-Dmz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="tWR-Lb-PoS">
+                            <connections>
+                                <action selector="editPressed:" destination="ZMU-5c-HCI" id="Sgf-ZD-xJj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="deleteButton" destination="ELB-Nx-GrE" id="H46-N9-cHq"/>
+                        <outlet property="editButton" destination="tWR-Lb-PoS" id="gS2-UK-Hla"/>
+                        <outlet property="favoriteButton" destination="1He-jx-cMK" id="Dm2-bo-mr6"/>
+                        <outlet property="imageView" destination="x5e-VQ-o65" id="wfP-K9-hWb"/>
+                        <segue destination="mlY-97-VfH" kind="presentation" identifier="StitchEditSegue" id="SFl-gk-z5w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S4D-jj-9wZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63" y="-366"/>
+        </scene>
+        <!--My Stitches-->
+        <scene sceneID="J3f-zn-aoN">
+            <objects>
+                <viewController id="mPw-Rc-NjV" customClass="StitchesViewController" customModule="Stitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZNG-Sq-68x"/>
+                        <viewControllerLayoutGuide type="bottom" id="3LF-EA-RZk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kj4-bB-wIo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ajB-46-bwh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yMp-Pi-P3d">
+                                    <size key="itemSize" width="160" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StitchCell" id="EN9-VX-jog" customClass="AssetCell" customModule="Stitch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-Bo-eEh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="LgL-Bo-eEh" secondAttribute="bottom" id="G0g-js-hl3"/>
+                                            <constraint firstItem="LgL-Bo-eEh" firstAttribute="top" secondItem="EN9-VX-jog" secondAttribute="top" id="Xaj-Hm-rEu"/>
+                                            <constraint firstItem="LgL-Bo-eEh" firstAttribute="leading" secondItem="EN9-VX-jog" secondAttribute="leading" id="bmp-VN-OVU"/>
+                                            <constraint firstAttribute="trailing" secondItem="LgL-Bo-eEh" secondAttribute="trailing" id="cP1-w9-D1m"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="LgL-Bo-eEh" id="trD-hU-Bo5"/>
+                                            <segue destination="ZMU-5c-HCI" kind="show" identifier="StitchDetailSegue" id="jvq-ys-eV9"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <variation key="heightClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="mPw-Rc-NjV" id="Doz-ZE-alP"/>
+                                    <outlet property="delegate" destination="mPw-Rc-NjV" id="HHx-6d-n4A"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new stitch by pressing +" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="257" translatesAutoresizingMaskIntoConstraints="NO" id="4Eg-lg-qYY">
+                                <rect key="frame" x="172" y="290" width="257" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="4Eg-lg-qYY" secondAttribute="centerY" id="2p3-hg-Eer"/>
+                            <constraint firstItem="3LF-EA-RZk" firstAttribute="top" secondItem="ajB-46-bwh" secondAttribute="bottom" id="G41-Gc-pmb"/>
+                            <constraint firstItem="ajB-46-bwh" firstAttribute="leading" secondItem="kj4-bB-wIo" secondAttribute="leading" id="R02-F1-yOT"/>
+                            <constraint firstAttribute="trailing" secondItem="ajB-46-bwh" secondAttribute="trailing" id="YiE-PC-xNS"/>
+                            <constraint firstItem="ajB-46-bwh" firstAttribute="top" secondItem="kj4-bB-wIo" secondAttribute="top" id="gn6-J7-THn"/>
+                            <constraint firstAttribute="centerX" secondItem="4Eg-lg-qYY" secondAttribute="centerX" id="zS0-wP-okq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Stitches" id="ZfU-TO-gnC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="P2H-pO-bC1">
+                            <connections>
+                                <segue destination="mlY-97-VfH" kind="presentation" identifier="CreateNewStitchSegue" id="Pec-eB-UmF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ajB-46-bwh" id="7eG-2v-Xek"/>
+                        <outlet property="newStitchButton" destination="P2H-pO-bC1" id="EYv-PH-45M"/>
+                        <outlet property="noStitchView" destination="4Eg-lg-qYY" id="r4g-gt-aUj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SOk-nn-Kmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-696" y="-366"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pec-eB-UmF"/>
+    </inferredMetricsTieBreakers>
+</document>
