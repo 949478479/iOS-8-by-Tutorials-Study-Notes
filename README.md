@@ -11,6 +11,7 @@
 - [加载图像资源内容](#Loading content)
 - [修改图像资源模型](#changes objects)
 - [修改图像资源内容](#editing content)
+- [监听改变](#Observing changes)
 
 <a name="overview"></a>
 ## Photo 框架的主要功能
@@ -405,11 +406,24 @@ public func requestContentEditingInputWithOptions(options: PHContentEditingInput
 	-> PHContentEditingInputRequestID
 ```
 
+闭包的字典参数可获取一些信息，支持如下键：
+
+- `PHContentEditingInputResultIsInCloudKey`：如果取出的`Bool`值为`true`，说明图像资源在 iCloud 端，而且`PHContentEditingInputRequestOptions`参数对象的`networkAccessAllowed`属性未开启。
+- `PHContentEditingInputCancelledKey`：如果加载请求被中途取消，取出的`Bool`值为`true`。
+- `PHContentEditingInputErrorKey`：如果发生错误可以用该键取出`NSError`对象进行查看。
+
 该方法会返回一个`PHContentEditingInputRequestID`，可配合`cancelContentEditingInputRequest(:_)`方法取消一个加载中的编辑请求。
 
 #### PHContentEditingInputRequestOptions
 
 可通过该参数对象设置`canHandleAdjustmentData`闭包来针对`PHAdjustmentData`对象进行判断，通常可以比较其`formatIdentifier`和`formatVersion`属性，如果应用能够重现上次的编辑状态，返回`true`，系统就会提供原图。如果返回`false`，系统就会提供上次编辑过后的图片。
+
+```swift
+let options = PHContentEditingInputRequestOptions()
+options.canHandleAdjustmentData = {
+	$0.formatIdentifier == "com.cjyh.xxx" && $0.formatVersion == "1.0"
+}
+```
 
 还可以设置`networkAccessAllowed`属性决定是否加载 iCloud 端的图片，默认是`true`。
 
@@ -429,7 +443,7 @@ public func requestContentEditingInputWithOptions(options: PHContentEditingInput
 
 ```swift
 // 用 PHAsset 对象创建请求.
-anAsset.requestContentEditingInputWithOptions(nil) { input, info in
+anAsset.requestContentEditingInputWithOptions(nil) { input, _ in
 
 	/*	用于记录此次编辑信息的对象,主要为了之后能识别此次编辑情况,从而恢复操作之类的.
 		一般会使用应用标识,版本号,以及一个字典之类的对象的二进制数据.
@@ -450,3 +464,65 @@ anAsset.requestContentEditingInputWithOptions(nil) { input, info in
     }, completionHandler: nil)
 }
 ```
+
+<a name="Observing changes"></a>
+## 监听改变
+
+可以通过`PHPhotoLibrary`注册通知监听照片库的变化，无论是应用内造成的改变还是其他应用造成的改变，都会得到通知。
+
+```swift
+PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)   // 注册改变通知.
+PHPhotoLibrary.sharedPhotoLibrary().unregisterChangeObserver(self) // 注销改变通知.
+```
+
+作为观察者需采纳`PHPhotoLibraryChangeObserver`协议，实现如下方法：
+
+```swift
+func photoLibraryDidChange(changeInstance: PHChange) {
+	dispatch_async(dispatch_get_main_queue()) {
+		// 注意，此方法会在任意线程调用.
+	}
+}
+```
+
+#### PHChange
+
+`PHChange`提供了两个实例方法：
+
+```swift
+/*	若无任何改变，此方法会返回 nil。
+	此方法只能体现 PHObject 对象自身的改变，例如元数据、标题之类的改变，
+	无法反映出 PHAssetCollection 或 PHCollectionList 这种集合模型中元素数量、顺序以及元素本身的变化。*/
+public func changeDetailsForObject(object: PHObject) -> PHObjectChangeDetails?
+
+/*	若无任何改变，此方法会返回 nil。
+	此方法只能体现 PHFetchResult 对象中元素数量、顺序的变化，无法反映出元素本身的变化。*/
+public func changeDetailsForFetchResult(object: PHFetchResult) -> PHFetchResultChangeDetails?
+```
+
+#### PHObjectChangeDetails
+
+可以分别通过其`objectBeforeChanges`和`objectAfterChanges`属性获得改变前后的`PHObject`对象。
+
+通过`objectWasDeleted`属性判断该模型是否已从照片库删除。
+
+如果`PHObject`对象是`PHAsset`对象，还可以通过`assetContentChanged`属性判断模型对应的图像内容是否发生改变。
+
+#### PHFetchResultChangeDetails
+
+可以分别通过`fetchResultBeforeChanges`和`fetchResultAfterChanges`属性获取改变前后的`PHFetchResult`对象。
+
+如果其`hasIncrementalChanges`属性为`true`，那么下面的属性都将可用：
+
+- `removedIndexes`
+- `removedObjects`
+- `insertedIndexes`
+- `insertedObjects`
+- `changedIndexes`
+- `changedObjects`
+
+如果获取模型时传入的`PHFetchOptions`参数对象的`wantsIncrementalChangeDetails`属性为`false`（默认为`true`），那么`hasIncrementalChanges`属性就会为`false`。
+
+配合 table view 或者 collection view 时，若`hasIncrementalChanges`属性为`false`，那么此时只能根据`fetchResultAfterChanges`获取改变后的`PHFetchResult`，然后 reloadData。
+
+若`hasIncrementalChanges`属性为`true`，那么可利用上述六个属性针对特定的索引和单元格更新 UI。更新 UI 的操作顺序必须是先移除被移除的单元格，再插入新插入的单元格，然后更新内容变化的单元格的内容，最后再通过`hasMoves`属性判断是否有移动的情况，若是则进一步利用`enumerateMovesWithBlock(_:)`方法遍历发生移动的索引，并更新对应的单元格。
