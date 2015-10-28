@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		104144B91971E3F500874835 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104144B81971E3F500874835 /* WatchView.swift */; };
+		1054D8D11994761B003D4223 /* TimeZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1054D8D01994761B003D4223 /* TimeZoneViewController.swift */; };
+		107DB702196CFA6A004D7417 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107DB701196CFA6A004D7417 /* SettingsViewController.swift */; };
+		107DB706196CFAA2004D7417 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107DB705196CFAA2004D7417 /* ColorPickerViewController.swift */; };
+		107DB70F196CFAE8004D7417 /* nko_brightness_guide.png in Resources */ = {isa = PBXBuildFile; fileRef = 107DB70A196CFAE8004D7417 /* nko_brightness_guide.png */; };
+		107DB710196CFAE8004D7417 /* nko_brightness_guide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 107DB70B196CFAE8004D7417 /* nko_brightness_guide@2x.png */; };
+		107DB711196CFAE8004D7417 /* nko_colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 107DB70C196CFAE8004D7417 /* nko_colormap.png */; };
+		107DB712196CFAE8004D7417 /* NKOColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 107DB70E196CFAE8004D7417 /* NKOColorPickerView.m */; };
+		10A23B65196BBCFC00B49266 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10A23B62196BBCFC00B49266 /* test1.jpg */; };
+		10A23B66196BBCFC00B49266 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10A23B63196BBCFC00B49266 /* test2.jpg */; };
+		10A23B67196BBCFC00B49266 /* test3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 10A23B64196BBCFC00B49266 /* test3.jpg */; };
+		10B51191196B60EB00C500CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B51190196B60EB00C500CF /* AppDelegate.swift */; };
+		10B51196196B60EC00C500CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B51194196B60EC00C500CF /* Main.storyboard */; };
+		10B51198196B60EC00C500CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B51197196B60EC00C500CF /* Images.xcassets */; };
+		10BCFE3019C5715A006D4D01 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BCFE2F19C5715A006D4D01 /* BorderedButton.swift */; };
+		188237841BDF71A200544164 /* TimeZoneNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188237831BDF71A200544164 /* TimeZoneNames.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		102C8BFA196BA826005FB626 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		104144B81971E3F500874835 /* WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
+		1054D8D01994761B003D4223 /* TimeZoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneViewController.swift; sourceTree = "<group>"; };
+		107DB701196CFA6A004D7417 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		107DB705196CFAA2004D7417 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		107DB708196CFAE8004D7417 /* WatchControlSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WatchControlSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		107DB70A196CFAE8004D7417 /* nko_brightness_guide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nko_brightness_guide.png; sourceTree = "<group>"; };
+		107DB70B196CFAE8004D7417 /* nko_brightness_guide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nko_brightness_guide@2x.png"; sourceTree = "<group>"; };
+		107DB70C196CFAE8004D7417 /* nko_colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nko_colormap.png; sourceTree = "<group>"; };
+		107DB70D196CFAE8004D7417 /* NKOColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKOColorPickerView.h; sourceTree = "<group>"; };
+		107DB70E196CFAE8004D7417 /* NKOColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKOColorPickerView.m; sourceTree = "<group>"; };
+		10A23B62196BBCFC00B49266 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
+		10A23B63196BBCFC00B49266 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
+		10A23B64196BBCFC00B49266 /* test3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test3.jpg; sourceTree = "<group>"; };
+		10B5118B196B60EB00C500CF /* WatchControlSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchControlSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10B5118F196B60EB00C500CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10B51190196B60EB00C500CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10B51195196B60EC00C500CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10B51197196B60EC00C500CF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		10BCFE2F19C5715A006D4D01 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		188237831BDF71A200544164 /* TimeZoneNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimeZoneNames.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10B51188196B60EB00C500CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		100172C9198399E600ACA538 /* Custom Control */ = {
+			isa = PBXGroup;
+			children = (
+				104144B81971E3F500874835 /* WatchView.swift */,
+				10BCFE2F19C5715A006D4D01 /* BorderedButton.swift */,
+			);
+			name = "Custom Control";
+			sourceTree = "<group>";
+		};
+		107DB707196CFAB8004D7417 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				107DB709196CFAE8004D7417 /* Assets */,
+				107DB70D196CFAE8004D7417 /* NKOColorPickerView.h */,
+				107DB70E196CFAE8004D7417 /* NKOColorPickerView.m */,
+				107DB708196CFAE8004D7417 /* WatchControlSwift-Bridging-Header.h */,
+			);
+			name = "3rd Party";
+			sourceTree = "<group>";
+		};
+		107DB709196CFAE8004D7417 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				107DB70A196CFAE8004D7417 /* nko_brightness_guide.png */,
+				107DB70B196CFAE8004D7417 /* nko_brightness_guide@2x.png */,
+				107DB70C196CFAE8004D7417 /* nko_colormap.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		10B51182196B60EB00C500CF = {
+			isa = PBXGroup;
+			children = (
+				10B5118D196B60EB00C500CF /* WatchControlSwift */,
+				10B5118C196B60EB00C500CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10B5118C196B60EB00C500CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10B5118B196B60EB00C500CF /* WatchControlSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10B5118D196B60EB00C500CF /* WatchControlSwift */ = {
+			isa = PBXGroup;
+			children = (
+				107DB707196CFAB8004D7417 /* 3rd Party */,
+				100172C9198399E600ACA538 /* Custom Control */,
+				10DA1885196CAD0400CF3DA0 /* Controllers */,
+				10B51190196B60EB00C500CF /* AppDelegate.swift */,
+				10B51194196B60EC00C500CF /* Main.storyboard */,
+				10B5118E196B60EB00C500CF /* Supporting Files */,
+			);
+			path = WatchControlSwift;
+			sourceTree = "<group>";
+		};
+		10B5118E196B60EB00C500CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10A23B62196BBCFC00B49266 /* test1.jpg */,
+				10A23B63196BBCFC00B49266 /* test2.jpg */,
+				10A23B64196BBCFC00B49266 /* test3.jpg */,
+				10B51197196B60EC00C500CF /* Images.xcassets */,
+				188237831BDF71A200544164 /* TimeZoneNames.plist */,
+				10B5118F196B60EB00C500CF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10DA1885196CAD0400CF3DA0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1054D8D01994761B003D4223 /* TimeZoneViewController.swift */,
+				107DB701196CFA6A004D7417 /* SettingsViewController.swift */,
+				107DB705196CFAA2004D7417 /* ColorPickerViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10B5118A196B60EB00C500CF /* WatchControlSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10B511A7196B60EC00C500CF /* Build configuration list for PBXNativeTarget "WatchControlSwift" */;
+			buildPhases = (
+				10B51187196B60EB00C500CF /* Sources */,
+				10B51188196B60EB00C500CF /* Frameworks */,
+				10B51189196B60EB00C500CF /* Resources */,
+				102C8BFA196BA826005FB626 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WatchControlSwift;
+			productName = WatchControlSwift;
+			productReference = 10B5118B196B60EB00C500CF /* WatchControlSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10B51183196B60EB00C500CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = Raywenderlich;
+				TargetAttributes = {
+					10B5118A196B60EB00C500CF = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 10B51186196B60EB00C500CF /* Build configuration list for PBXProject "WatchControlSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10B51182196B60EB00C500CF;
+			productRefGroup = 10B5118C196B60EB00C500CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10B5118A196B60EB00C500CF /* WatchControlSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10B51189196B60EB00C500CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				188237841BDF71A200544164 /* TimeZoneNames.plist in Resources */,
+				10B51196196B60EC00C500CF /* Main.storyboard in Resources */,
+				10B51198196B60EC00C500CF /* Images.xcassets in Resources */,
+				107DB70F196CFAE8004D7417 /* nko_brightness_guide.png in Resources */,
+				107DB710196CFAE8004D7417 /* nko_brightness_guide@2x.png in Resources */,
+				10A23B66196BBCFC00B49266 /* test2.jpg in Resources */,
+				10A23B65196BBCFC00B49266 /* test1.jpg in Resources */,
+				10A23B67196BBCFC00B49266 /* test3.jpg in Resources */,
+				107DB711196CFAE8004D7417 /* nko_colormap.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10B51187196B60EB00C500CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1054D8D11994761B003D4223 /* TimeZoneViewController.swift in Sources */,
+				107DB706196CFAA2004D7417 /* ColorPickerViewController.swift in Sources */,
+				107DB712196CFAE8004D7417 /* NKOColorPickerView.m in Sources */,
+				104144B91971E3F500874835 /* WatchView.swift in Sources */,
+				10B51191196B60EB00C500CF /* AppDelegate.swift in Sources */,
+				10BCFE3019C5715A006D4D01 /* BorderedButton.swift in Sources */,
+				107DB702196CFA6A004D7417 /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		10B51194196B60EC00C500CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10B51195196B60EC00C500CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10B511A5196B60EC00C500CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10B511A6196B60EC00C500CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10B511A8196B60EC00C500CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = WatchControlSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WatchControlSwift/WatchControlSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		10B511A9196B60EC00C500CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = WatchControlSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Raywenderlich.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WatchControlSwift/WatchControlSwift-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10B51186196B60EB00C500CF /* Build configuration list for PBXProject "WatchControlSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10B511A5196B60EC00C500CF /* Debug */,
+				10B511A6196B60EC00C500CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10B511A7196B60EC00C500CF /* Build configuration list for PBXNativeTarget "WatchControlSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10B511A8196B60EC00C500CF /* Debug */,
+				10B511A9196B60EC00C500CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10B51183196B60EB00C500CF /* Project object */;
+}

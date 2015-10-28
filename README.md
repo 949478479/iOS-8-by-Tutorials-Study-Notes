@@ -1,5 +1,7 @@
 # Beginning Live Rendering
 
+![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Beginning-Live-Rendering/Screenshot/WatchControl.gif)
+
 ## 开启实时渲染
 
 iOS 8 开始，Xcode 提供了实时渲染功能，可以在 IB 中实时渲染自定义的 UI 视图，无需运行程序。
@@ -21,7 +23,7 @@ Up to date 说明实时渲染已经正常工作了。如果像下图这样提示
 
 ![](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/blob/Beginning-Live-Rendering/Screenshot/BuildFailed.png)
 
-有时候可能需要在实时渲染时提供一些假数据，那么可以选择实现`prepareForInterfaceBuilder()`方法：
+有时候需要在实时渲染时提供一些假数据，那么可以实现`prepareForInterfaceBuilder()`方法：
 
 ```swift
 override func prepareForInterfaceBuilder() {
@@ -41,7 +43,7 @@ override func prepareForInterfaceBuilder() {
 
 ## 让类中属性支持实时渲染
 
-像下面这样，在属性声明前标记`@IBInspectable`属性，就可以将该属性暴露给 IB 的 Attributes Inspector。
+在属性声明前标记`@IBInspectable`属性，就可以将该属性暴露给 IB 的 Attributes Inspector：
 
 ```swift
 @IBInspectable var name: Type = value // 注意一定要加上变量类型，不能使用类型推断。
