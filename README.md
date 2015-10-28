@@ -18,3 +18,4 @@
 ## Major New Features
 
 - [Photos Framework](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/tree/Photos-Framework)
+- [Live-Rendering](https://github.com/949478479/iOS-8-by-Tutorials-Study-Notes/tree/Beginning-Live-Rendering)
