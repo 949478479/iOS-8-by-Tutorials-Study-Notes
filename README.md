@@ -43,7 +43,9 @@ public func goToBackForwardListItem(item: WKBackForwardListItem) -> WKNavigation
 
 #### WKNavigationDelegate
 
-`WKWebView`有两个代理，`WKNavigationDelegate`和`WKUIDelegate`。前者类似于`UIWebView`的代理，后者主要处理 javascript 弹窗之类的 UI 相关事宜。
+`WKWebView`有两个代理，`WKNavigationDelegate`和`WKUIDelegate`。
+
+前者类似于`UIWebView`的代理，后者主要处理 javascript 弹窗之类的 UI 相关事宜。
 
 下面两个代理方法可以决定允许或者禁止一些跳转：
 
@@ -192,13 +194,13 @@ let webView = WKWebView(frame: CGRect(), configuration: configuration)
 ```swift
 func userContentController(userContentController: WKUserContentController,
 	didReceiveScriptMessage message: WKScriptMessage) {
-	print("message: \(message.body)") // 打印 Hello!~
+	print("message: \(message.body)") // 打印 message: Hello!~
 }
 ```
 
 其中核心代码就是`webkit.messageHandlers.sayHello.postMessage("Hello!~");`这句。
 
-`sayHello`指定了原生代码中注册的名字，即`addScriptMessageHandler(self, name: "sayHello")`注册的。
+`sayHello`指定了原生代码中注册的名字，即`addScriptMessageHandler(self, name: "sayHello")`所注册的。
 
 `postMessage()`中可传入一些对象，可通过`WKScriptMessage`对象的`body`属性获取。
 
