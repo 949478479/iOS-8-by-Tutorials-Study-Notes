@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OQZ-C1-185">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EyeBrowse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3jr-fA-tOJ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="2"/>
+                            </progressView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjd-Wj-o4k">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem enabled="NO" image="icon_back" id="n8T-jN-Xtr">
+                                        <connections>
+                                            <action selector="goBack:" destination="BYZ-38-t0r" id="wHW-78-aVd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="85M-bW-vUj"/>
+                                    <barButtonItem enabled="NO" image="icon_forward" id="Raw-xm-D3U">
+                                        <connections>
+                                            <action selector="goForward:" destination="BYZ-38-t0r" id="NLo-PM-zkg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="HFc-3d-ykj"/>
+                                    <barButtonItem image="icon_refresh" id="hzh-0b-Naj">
+                                        <connections>
+                                            <action selector="stopReload:" destination="BYZ-38-t0r" id="qi1-ya-Kay"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3jr-fA-tOJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="01n-sO-5FX"/>
+                            <constraint firstAttribute="bottom" secondItem="Wjd-Wj-o4k" secondAttribute="bottom" id="3nB-9a-ZwM"/>
+                            <constraint firstItem="3jr-fA-tOJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Wbf-BY-K9e"/>
+                            <constraint firstAttribute="trailing" secondItem="3jr-fA-tOJ" secondAttribute="trailing" id="b1J-Xz-99c"/>
+                            <constraint firstItem="Wjd-Wj-o4k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="e9g-TY-Uk8"/>
+                            <constraint firstAttribute="trailing" secondItem="Wjd-Wj-o4k" secondAttribute="trailing" id="q9X-Mf-w1m"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fbZ-UN-yPe">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="9RT-Ik-oaW">
+                            <rect key="frame" x="20" y="8" width="560" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" text="http://raywenderlich.com" translatesAutoresizingMaskIntoConstraints="NO" id="YzR-UR-lwc">
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="28"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="oYt-LC-V4u"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="YzR-UR-lwc" secondAttribute="bottom" id="I2k-QT-SXD"/>
+                                <constraint firstItem="YzR-UR-lwc" firstAttribute="top" secondItem="9RT-Ik-oaW" secondAttribute="top" id="NuA-7o-7Xz"/>
+                                <constraint firstAttribute="trailing" secondItem="YzR-UR-lwc" secondAttribute="trailing" id="g7U-oP-yKH"/>
+                                <constraint firstItem="YzR-UR-lwc" firstAttribute="leading" secondItem="9RT-Ik-oaW" secondAttribute="leading" id="zpz-c4-h82"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backButton" destination="n8T-jN-Xtr" id="9Sx-bp-hSV"/>
+                        <outlet property="forwardButton" destination="Raw-xm-D3U" id="YPO-a2-vAm"/>
+                        <outlet property="progressView" destination="3jr-fA-tOJ" id="CYe-4u-jEL"/>
+                        <outlet property="searchBar" destination="YzR-UR-lwc" id="njC-PY-ELi"/>
+                        <outlet property="searchBarBackgroundView" destination="9RT-Ik-oaW" id="L4Y-pF-kxh"/>
+                        <outlet property="stopReloadButton" destination="hzh-0b-Naj" id="kYu-uX-nXk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cZK-sh-XQ9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OQZ-C1-185" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ep3-2d-f7S">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hQp-Wf-unl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BHC-Bv-IpH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="459" y="429"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_back" width="34" height="34"/>
+        <image name="icon_forward" width="34" height="34"/>
+        <image name="icon_refresh" width="34" height="34"/>
+    </resources>
+</document>
