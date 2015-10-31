@@ -2,13 +2,19 @@
 
 iOS 8 推出了`WKWebView`，用于取代备受诟病的`UIWebView`。
 
-这个新类的很多方法都与`UIWebView`的方法非常相似，用法基本相同。而且很多属性都支持 KVO，可以方便地进行监听。
+这个新类的很多方法都与`UIWebView`的方法非常相似，用法基本相同，而且很多属性都支持 KVO。
+
+- [新增功能](#新增功能)
+- [注入 javascript 代码](#javascript injection)
+- [原生代码与 javascript 代码通信](#communication)
+
+## 新增功能
 
 下面介绍一些非常好用的功能。
 
 #### 估测网页加载进度
 
-`WKWebView`提供了如下属性，可以很方便地估测网页加载进度，该值介于 0.0~1.0 之间，支持 KVO。
+`WKWebView`提供了如下属性，可以估测网页加载进度，该值介于 0.0~1.0 之间，支持 KVO。
 
 ```swift
 public var estimatedProgress: Double { get }
@@ -36,7 +42,7 @@ public func goToBackForwardListItem(item: WKBackForwardListItem) -> WKNavigation
 
 例如，下面两个属性提供了对 HTML5 视频的播放设置：
 
-``swift
+```swift
 public var allowsInlineMediaPlayback: Bool
 public var requiresUserActionForMediaPlayback: Bool
 ```
@@ -46,6 +52,9 @@ public var requiresUserActionForMediaPlayback: Bool
 ```swift
 public var userContentController: WKUserContentController
 ```
+
+<a name="javascript injection"></a>
+## 注入 javascript 代码
 
 #### WKUserContentController
 
@@ -76,12 +85,16 @@ public init(source: String, injectionTime: WKUserScriptInjectionTime, forMainFra
 
 ```swift
 let configuration = WKWebViewConfiguration()
-let removeAdScript = WKUserScript(source: "document.getElementsByClassName('adsbygoogle')[0].remove();", injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
+let removeAdScript = WKUserScript(source: "document.getElementsByClassName('adsbygoogle')[0].remove();", 
+	injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
 configuration.userContentController.addUserScript(removeAdScript)
 let webView = WKWebView(frame: CGRect(), configuration: configuration)
 ```
 
-这样，加载出来的页面就是去除广告后的了。
+这样加载出来的就是去除广告后的页面了。
+
+<a name="communication"></a>
+## 原生代码与 javascript 代码通信
 
 #### WKScriptMessageHandler
 
@@ -96,28 +109,29 @@ public func addScriptMessageHandler(scriptMessageHandler: WKScriptMessageHandler
 `WKScriptMessageHandler`是一个协议，声明了如下方法：
 
 ```swift
-public func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage)
+public func userContentController(userContentController: WKUserContentController, 
+	didReceiveScriptMessage message: WKScriptMessage)
 ```
 
-只需在 javascript 代码中，使用该格式定义回调
+只需在 javascript 代码中，使用该格式定义回调：
 
-```javascript
+```
 webkit.messageHandlers.name.postMessage(messageBody);
 ```
 
-然后使用`addScriptMessageHandler(_:name:)`方法注册对应的回调方法即可。
+然后使用`addScriptMessageHandler(_:name:)`方法注册对应的名字即可。
 
 具体使用类似这样：
 
 ```swift
 let configuration = WKWebViewConfiguration()
-let userScript = WKUserScript(source: "javascript 代码...", injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
-configuration.userContentController.addUserScript(userScript)
+let userScript = WKUserScript(source: "javascript 代码...", 
+	injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
 configuration.userContentController.addScriptMessageHandler(self, name: "sayHello")
 let webView = WKWebView(frame: CGRect(), configuration: configuration)
 ```
 
-javascript 代码的核心部分类似这样：
+网页中的 javascript 代码的核心部分类似这样：
 
 ```javascript
 <script>
@@ -131,15 +145,16 @@ javascript 代码的核心部分类似这样：
 然后`self`需实现协议方法：
 
 ```swift
-func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+func userContentController(userContentController: WKUserContentController,
+	didReceiveScriptMessage message: WKScriptMessage) {
 	print("message: \(message.body)") // 打印 Hello!~
 }
 ```
 
 其中核心代码就是`webkit.messageHandlers.sayHello.postMessage("Hello!~");`这句。
 
-`sayHello`指定了原生代码中注册的名字，即`addScriptMessageHandler(self, name: "sayHello")`这里注册的`name`。
+`sayHello`指定了原生代码中注册的名字，即`addScriptMessageHandler(self, name: "sayHello")`注册的。
 
-`postMessage()`中可传入一些对象，会作为`WKScriptMessage`对象的`body`属性。
+`postMessage()`中可传入一些对象，可通过`WKScriptMessage`对象的`body`属性获取。
 
 该属性支持类型有：`NSNumber`，`NSString`，`NSDate`，`NSArray`，`NSDictionary`，`NSNull`。
