@@ -20,6 +20,15 @@ iOS 8 推出了`WKWebView`，用于取代备受诟病的`UIWebView`。
 public var estimatedProgress: Double { get }
 ```
 
+#### 获取网页标题和当前 URL
+
+可通过这两个属性获取网页标题和当前的 URL，更新 UI，它们也是支持 KVO 的，非常方便。
+
+```swift
+public var title: String? { get }
+@NSCopying public var URL: NSURL? { get }
+```
+
 #### 前进后退
 
 `WKWebView`在`UIWebView`的基础上，对页面的前进后退功能进一步完善，还可以支持手势操作。
@@ -30,6 +39,44 @@ public var allowsBackForwardNavigationGestures: Bool
 public var backForwardList: WKBackForwardList { get }
 
 public func goToBackForwardListItem(item: WKBackForwardListItem) -> WKNavigation?
+```
+
+#### WKNavigationDelegate
+
+`WKWebView`有两个代理，`WKNavigationDelegate`和`WKUIDelegate`。前者类似于`UIWebView`的代理，后者主要处理 javascript 弹窗之类的 UI 相关事宜。
+
+下面两个代理方法可以决定允许或者禁止一些跳转：
+
+```swift
+optional public func webView(webView: WKWebView, 
+	decidePolicyForNavigationAction navigationAction: WKNavigationAction, 
+	decisionHandler: (WKNavigationActionPolicy) -> Void)
+	
+optional public func webView(webView: WKWebView, 
+	decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse,
+	decisionHandler: (WKNavigationResponsePolicy) -> Void)
+```
+
+例如，想限制点击一些链接造成的跳转：
+
+```swift
+func webView(webView: WKWebView, 
+	decidePolicyForNavigationAction navigationAction: WKNavigationAction,
+	decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
+	
+	// 点击链接才进一步处理.
+    guard navigationAction.navigationType == .LinkActivated else {
+        decisionHandler(.Allow)
+        return
+    }
+
+	// 如果点击了站外链接,则取消,不允许跳转.
+    if let host = navigationAction.request.URL?.host where !host.hasPrefix("www.233.com") {
+        decisionHandler(.Cancel)
+    } else {
+        decisionHandler(.Allow)
+    }
+}
 ```
 
 #### WKWebViewConfiguration
@@ -125,8 +172,6 @@ webkit.messageHandlers.name.postMessage(messageBody);
 
 ```swift
 let configuration = WKWebViewConfiguration()
-let userScript = WKUserScript(source: "javascript 代码...", 
-	injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
 configuration.userContentController.addScriptMessageHandler(self, name: "sayHello")
 let webView = WKWebView(frame: CGRect(), configuration: configuration)
 ```
@@ -158,3 +203,5 @@ func userContentController(userContentController: WKUserContentController,
 `postMessage()`中可传入一些对象，可通过`WKScriptMessage`对象的`body`属性获取。
 
 该属性支持类型有：`NSNumber`，`NSString`，`NSDate`，`NSArray`，`NSDictionary`，`NSNull`。
+
+实际使用中，可以通过`postMessage("方法名")`这种方式传递方法名，进而通过原生代码调用相应方法，比起之前利用 URL 传递方法名要自然多了。
