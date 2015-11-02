@@ -1,12 +1,13 @@
 # Visual Effects
 
+- [图片模糊原理介绍](#图片模糊原理介绍)
+- [UIVisualEffectView](#UIVisualEffectView)
+
 ## 图片模糊原理介绍
 
 为了生成模糊图片，需根据一定的模糊算法对图片每个像素的颜色值进行计算，将结果作为像素模糊后的颜色值。
 
-模糊算法有不同的风格和复杂性，在本 demo 中将使用高斯（Gaussian）模糊算法。
-
-最简单模糊的过程即是用某个像素周围像素的颜色平均值作为该像素模糊后的颜色值。
+模糊算法的复杂性各不相同，最简单模糊的过程即是用某个像素周围像素的颜色平均值作为该像素模糊后的颜色值。
 
 如下图所示。当然这里为了简化使用整数演示颜色值。
 
@@ -20,14 +21,13 @@
 
 按照这样的算法，对图片每个像素进行处理，就得出了模糊后的图片。
 
-上述算法仅计算了中心像素周围相邻的像素，如果扩大模糊半径，例如将各方向上 3 个像素纳入计算范围，则会增大模糊的效果。
-
-如下图所示：
+上述算法仅计算了中心像素周围相邻的像素，如果扩大模糊半径，例如将各方向上 3 个像素纳入计算范围，则会增大模糊的效果。如下图所示：
 
 ![](./Screenshot/BlurRadius.png)
 
 通常来说，模糊半径越大，参与计算的像素就越多，计算带来的性能消耗就越大。
 
+<a name="UIVisualEffectView"></a>
 ## UIVisualEffectView
 
 iOS 8 推出了`UIVisualEffectView`，可以轻松实现模糊效果，再也不用借助第三方框架了。
@@ -46,7 +46,7 @@ public init(effect: UIVisualEffect?)
 
 ```swift
 public class UIBlurEffect : UIVisualEffect {
-    public /*not inherited*/ init(style: UIBlurEffectStyle)
+    public init(style: UIBlurEffectStyle)
 }
 ```
 
@@ -66,7 +66,7 @@ public enum UIBlurEffectStyle : Int {
 
 ```swift
 public class UIVibrancyEffect : UIVisualEffect {
-    public /*not inherited*/ init(forBlurEffect blurEffect: UIBlurEffect)
+    public init(forBlurEffect blurEffect: UIBlurEffect)
 }
 ```
 
@@ -88,7 +88,7 @@ import NotificationCenter
 
 `UIBlurEffect`和`UIVibrancyEffect`经过组合，会有六种效果，如下图所示：
 
-![](.Screenshot/Style.png)
+![](./Screenshot/Style.png)
 
 #### 使用方法
 
@@ -120,19 +120,21 @@ let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
 blurEffectView.contentView.addSubview(vibrancyEffectView)
 ```
 
-和单独使用`UIBlurEffect`时类似，`blurEffectView`下层的视图会产生模糊效果。
+和单独使用`UIBlurEffect`类似，`blurEffectView`下层的视图会产生模糊效果。
 
-配合`UIVibrancyEffect`的效果在于，如果将一些视图，例如一个`UILabel`添加到`vibrancyEffectView`的`contentView`上，这个子视图会有种突出显示的效果。
+另外，`vibrancyEffectView`的`contentView`上的子视图，例如一个`UILabel`，会有种突出显示的效果。
 
 如果使用 IB，则会方便的多。
 
-单独使用`UIBlurEffect`效果时，直接从列表里拖一个`Visual Effect View with Blur`对象出来即可。如果需要添加子视图，直接添加到它的子视图`View`上即可。
+单独使用`UIBlurEffect`效果时，直接从对象列表里拖一个`Visual Effect View with Blur`
+对象出来即可。如果需要添加子视图，直接添加到它的子视图`View`上即可。
 
 其层级结构如下图所示：
 
-![])(./Screenshot/VisualEffectViewWithBlur.png)
+![](./Screenshot/VisualEffectViewWithBlur.png)
 
-配合`UIVibrancyEffect`效果使用时，拖一个`Visual Effect Views with Blur and Vibrancy`对象出来，将子视图添加到最上层的`View`上即可。
+配合`UIVibrancyEffect`效果使用时，拖一个`Visual Effect Views with Blur and Vibrancy`
+对象出来，将子视图添加到最上层的`View`上即可。
 
 其层级结构如下图所示：
 
@@ -147,5 +149,3 @@ blurEffectView.contentView.addSubview(vibrancyEffectView)
 #### 注意事项
 
 `UIVisualEffectView`以及父视图的`alpha`需要为`1.0`，否则会因为大量额外的像素合成带来很大的性能问题，甚至可能无法正确呈现模糊效果。
-
-对`UIVisualEffectView`设置`mask`时，它会将`mask`视图进行 copy，
