@@ -1,0 +1,58 @@
+{
+    "places": [
+        {
+            "title": "Dyken Pond",
+            "date": "2014-06-21 14:56:00 EST",
+            "image": "dykenpond.png",
+            "location": {
+                "latitude": 42.72578833,
+                "longitude": -73.42223333
+            }
+        },
+        {
+            "title": "Tatcher Park",
+            "date": "2010-02-21 11:14:43 EST",
+            "image": "tatcherpark.png",
+            "location": {
+                "latitude": 42.655833,
+                "longitude": -74.019167
+            }
+        },
+        {
+            "title": "Golden Gate Bridge",
+            "date": "2012-06-12 21:04:43 EST",
+            "image": "goldengatebridge.png",
+            "location": {
+                "latitude": 37.819722,
+                "longitude": -122.478611
+            }
+        },
+        {
+            "title": "Cape Cod",
+            "date": "2012-11-16 13:23:59 EST",
+            "image": "capecod.png",
+            "location": {
+               "latitude": 41.650414,
+                "longitude": -70.180310
+            }
+        },
+        {
+            "title": "Moscone Center",
+            "date": "2014-06-21 13:56:43 EST",
+            "image": "mosconecenter.png",
+            "location": {
+                "latitude": 37.801262,
+                "longitude": -122.433021
+            }
+        },
+                {
+            "title": "Schoharie",
+            "date": "2012-09-29 14:35:27 EST",
+            "image": "schoharie.png",
+            "location": {
+               "latitude": 42.677454,
+                "longitude": -74.424348
+            }
+        }
+    ]
+}
