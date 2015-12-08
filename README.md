@@ -2,7 +2,14 @@
 
 ![](Screenshot/Final.gif)
 
-## 应用扩展基本概念
+学习自 [Introduction to iOS 8 App Extension: Creating a Today Widget](http://www.appcoda.com/app-extension-programming-today)。
+
+- [应用扩展基本介绍](#How Extensions Work)
+- [使用内嵌框架共享代码](#Embedded Frameworks and Code Reuse)
+- [创建 Today Extension](#Creating Today Extension)
+
+<a name="How Extensions Work"></a>
+## 应用扩展基本介绍
 
 应用扩展虽然是个独立的 target，但是不能独立于应用程序，无论是开发还是发布，都需要依附于一个主体应用程序（可称之为容器应用）。
 
@@ -22,6 +29,7 @@
 NSUserDefaults(suiteName: "group.com.cjyh.weather")
 ```
 
+<a name="Embedded Frameworks and Code Reuse"></a>
 ## 使用内嵌框架共享代码
 
 由于应用扩展是个独立的 target，无法访问主程序 target 中的代码，为了避免代码重复，最好将可复用的代码单独封装为一个内嵌框架。
@@ -43,6 +51,7 @@ NSUserDefaults(suiteName: "group.com.cjyh.weather")
 
 ![](Screenshot/Framework_3.png)
 
+<a name="Creating Today Extension"></a>
 ## 创建 Today Extension
 
 如下图所示，在工程中新建 target，选择 `Today Extension`：
