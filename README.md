@@ -50,7 +50,9 @@ NSUserDefaults(suiteName: "group.com.cjyh.weather")
 ![](Screenshot/CreateTodayExtension_1.png)
 ![](Screenshot/CreateTodayExtension_2.png)
 
-点击 `Finish` 后会弹出个对话框，询问是否激活扩展的 `Scheme`，点击激活即可。
+如下图所示，点击 `Finish` 后会弹出个对话框，询问是否激活扩展的 `Scheme`，点击激活即可：
+
+![](Screenshot/ActivateScheme.png)
 
 创建 target 后，可以发现工程目录下多了扩展的文件夹，如下图所示：
 
@@ -78,7 +80,8 @@ Xcode 自动提供了一个 `Storyboard`，之后就在这里进行界面设计�
 
 ```swift
 func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-    /*  Xcode 已提供了此代理方法的默认实现。系统会定期调用此方法，
+    /*  Xcode 已提供了此代理方法的默认实现。根据文档描述，系统会定期调用此方法（包括在后台时），
+        实践中发现每次应用扩展显示时肯定会调用一次，之后什么时候会调用就不得而知了。
         可以在这里根据需要异步更新展示的数据，完成后调用闭包，并传入 .NewData。
         另外还有 .NoData 和 .Failed 选项。 */
     completionHandler(.NewData)
@@ -89,3 +92,5 @@ func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets
     return UIEdgeInsets() 
 }
 ```
+
+经过多次尝试，发现比较好的实践是，在 `viewDidDisappear(_:)` 方法中保存界面内容（使用 `NSUserDefaults.standardUserDefaults()` 即可，保存到宿主应用的沙盒中），此方法会在 `Today` 被关闭时调用。每次打开 `Today` 时，应用扩展的 `viewDidLoad()` 方法会被调用，可以在此读取之前保存的界面内容，从而在网络请求完成前快速恢复到上次的界面内容。此方法过后，`widgetPerformUpdateWithCompletionHandler(_:)` 方法会被调用，可以在这里异步请求最新数据，请求完成后更新界面内容并保存，然后调用闭包。此方法过后，`viewWillAppear(_:)` 和 `viewDidAppear(_:)` 方法才会被调用。
