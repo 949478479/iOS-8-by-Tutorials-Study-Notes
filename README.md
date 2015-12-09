@@ -2,8 +2,6 @@
 
 ![](Screenshot/Final.gif)
 
-学习自 [Introduction to iOS 8 App Extension: Creating a Today Widget](http://www.appcoda.com/app-extension-programming-today)。
-
 - [应用扩展基本介绍](#How Extensions Work)
 - [使用内嵌框架共享代码](#Embedded Frameworks and Code Reuse)
 - [创建 Today Extension](#Creating Today Extension)
@@ -102,4 +100,15 @@ func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets
 }
 ```
 
-经过多次尝试，发现比较好的实践是，在 `viewDidDisappear(_:)` 方法中保存界面内容（使用 `NSUserDefaults.standardUserDefaults()` 即可，保存到宿主应用的沙盒中），此方法会在 `Today` 被关闭时调用。每次打开 `Today` 时，应用扩展的 `viewDidLoad()` 方法会被调用，可以在此读取之前保存的界面内容，从而在网络请求完成前快速恢复到上次的界面内容。此方法过后，`widgetPerformUpdateWithCompletionHandler(_:)` 方法会被调用，可以在这里异步请求最新数据，请求完成后更新界面内容并保存，然后调用闭包。此方法过后，`viewWillAppear(_:)` 和 `viewDidAppear(_:)` 方法才会被调用。
+经过多次尝试，发现比较好的实践是，在 `viewDidDisappear(_:)` 方法中保存界面内容（使用 `NSUserDefaults.standardUserDefaults()` 即可，保存到宿主应用的沙盒中），此方法会在 `Today` 被关闭时调用。每次打开 `Today` 时，Today 扩展的 `viewDidLoad()` 方法会被调用，可以在此读取之前保存的界面内容，从而在网络请求完成前快速恢复到上次的界面内容。此方法过后，`widgetPerformUpdateWithCompletionHandler(_:)` 方法会被调用，可以在这里异步请求最新数据，请求完成后更新界面内容并保存，然后调用闭包。此方法过后，`viewWillAppear(_:)` 和 `viewDidAppear(_:)` 方法才会被调用。
+
+另外，如果不想继续在 `Today` 中展示内容（例如暂时没有新内容了），可以在 Today 扩展或者容器（宿主）应用中获取 `NCWidgetController`，然后通过 `setHasContent(_:forWidgetWithBundleIdentifier:)` 方法来隐藏 Today 扩展。需要注意的是，如果想再次显示，只能在容器应用或者宿主应用中重新调用此方法来重新显示 Today 扩展。
+
+```swift
+class NCWidgetController : NSObject {
+    
+    class func widgetController() -> Self
+    
+    func setHasContent(flag: Bool, forWidgetWithBundleIdentifier bundleID: String)
+}
+```
