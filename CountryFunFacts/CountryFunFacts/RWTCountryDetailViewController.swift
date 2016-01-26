@@ -24,8 +24,7 @@
 
 import UIKit
 
-class RWTCountryDetailViewController: UIViewController,
-UISplitViewControllerDelegate {
+class RWTCountryDetailViewController: UIViewController, UISplitViewControllerDelegate {
 
     @IBOutlet var flagImageView: UIImageView!
     @IBOutlet var quizQuestionLabel: UILabel!
@@ -34,13 +33,10 @@ UISplitViewControllerDelegate {
     @IBOutlet var answer3Button: UIButton!
     @IBOutlet var answer4Button: UIButton!
 
-    var masterPopoverController: UIPopoverController? = nil
     var country: RWTCountry? {
         didSet {
-            configureView()
-
-            if masterPopoverController != nil {
-                masterPopoverController!.dismissPopoverAnimated(true)
+            if isViewLoaded() {
+                configureView()
             }
         }
     }
@@ -48,10 +44,10 @@ UISplitViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if splitViewController!.displayMode ==
-            UISplitViewControllerDisplayMode.PrimaryHidden {
+        quizQuestionLabel.preferredMaxLayoutWidth = view.bounds.size.width - 40
 
-                addCountryListButton()
+        if splitViewController!.displayMode == UISplitViewControllerDisplayMode.PrimaryHidden {
+            addCountryListButton()
         }
 
         configureView()
@@ -70,41 +66,17 @@ UISplitViewControllerDelegate {
     }
 
     func configureView() {
-        if country != nil {
-            self.title = country!.countryName;
-
-            if flagImageView != nil {
-                let image: UIImage = UIImage(named: country!.imageName)!;
-                flagImageView.image = image;
-            }
-
-            if quizQuestionLabel != nil {
-                quizQuestionLabel.text = country!.quizQuestion;
-            }
-
-            if answer1Button != nil {
-                answer1Button.setTitle(country!.quizAnswers[0],forState:UIControlState.Normal)
-            }
-
-            if answer2Button != nil {
-                answer2Button.setTitle(country!.quizAnswers[1], forState:UIControlState.Normal)
-            }
-
-            if answer3Button != nil {
-                answer3Button.setTitle(country!.quizAnswers[2], forState:UIControlState.Normal)
-            }
-
-            if answer4Button != nil {
-                answer4Button.setTitle(country!.quizAnswers[3],forState:UIControlState.Normal)
-            }
+        if let country = country {
+            self.title = country.countryName;
+            let image = UIImage(named: country.imageName)!;
+            flagImageView.image = image;
+            quizQuestionLabel.text = country.quizQuestion;
+            answer1Button.setTitle(country.quizAnswers[0],forState:UIControlState.Normal)
+            answer2Button.setTitle(country.quizAnswers[1], forState:UIControlState.Normal)
+            answer3Button.setTitle(country.quizAnswers[2], forState:UIControlState.Normal)
+            answer4Button.setTitle(country.quizAnswers[3],forState:UIControlState.Normal)
         }
     }
-
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        quizQuestionLabel.preferredMaxLayoutWidth = view.bounds.size.width - 40
-    }
-
 
     @IBAction func quizAnswerButtonPressed(sender: UIButton) {
         let buttonTitle = sender.currentTitle
@@ -126,7 +98,6 @@ UISplitViewControllerDelegate {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
         if segue.identifier == "PopCountryVC" {
             let contentVC = segue.destinationViewController as! RWTCountryPopoverViewController
             contentVC.country = country
@@ -139,9 +110,7 @@ UISplitViewControllerDelegate {
     func splitViewController(svc: UISplitViewController,
         willChangeToDisplayMode displayMode:
         UISplitViewControllerDisplayMode) {
-
-            if displayMode ==
-                UISplitViewControllerDisplayMode.AllVisible {
+            if displayMode == UISplitViewControllerDisplayMode.AllVisible {
                     navigationItem.leftBarButtonItem = nil;
             } else {
                 let barButtonItem = svc.displayModeButtonItem()
@@ -152,8 +121,7 @@ UISplitViewControllerDelegate {
     func splitViewController(splitViewController: UISplitViewController,
         collapseSecondaryViewController secondaryViewController: UIViewController,
         ontoPrimaryViewController primaryViewController: UIViewController) -> Bool  {
-            
-            return true
+        return true
     }
 }
 
