@@ -62,9 +62,9 @@ class CollectionViewLayout: UICollectionViewFlowLayout {
       
       for update in updateItems {
         if update.updateAction == UICollectionUpdateAction.Delete {
-          deleteIndexPaths.addObject(update.indexPathBeforeUpdate)
+          deleteIndexPaths.addObject(update.indexPathBeforeUpdate!)
         } else if update.updateAction == UICollectionUpdateAction.Insert {
-          insertIndexPaths.addObject(update.indexPathAfterUpdate)
+          insertIndexPaths.addObject(update.indexPathAfterUpdate!)
         }
       }
   }

@@ -17,7 +17,7 @@ class SimpleTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
             presentingViewController: presenting)
     }
 
-/* 这些是自定义过渡动画的内容. UIPresentationController并不依赖于这些.
+/* // 这些是自定义过渡动画的内容
     func animationControllerForPresentedController(presented: UIViewController,
         presentingController presenting: UIViewController,
         sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

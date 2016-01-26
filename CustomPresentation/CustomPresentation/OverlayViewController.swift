@@ -36,7 +36,7 @@ class OverlayViewController: UIViewController {
   
   init(country: Country) {
     super.init(nibName: nil, bundle: nil)
-    
+
     self.country = country
     modalPresentationStyle = UIModalPresentationStyle.Custom
     configureUIElements()
