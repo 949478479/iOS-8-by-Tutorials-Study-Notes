@@ -332,7 +332,7 @@ public func stopCachingImagesForAllAssets()
 ```swift
 var assetPlaceholder: PHObjectPlaceholder!
 PHPhotoLibrary.sharedPhotoLibrary().performChanges({ 
-	let changeRequset = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle("相册名字")
+    let changeRequset = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle("相册名字")
     assetPlaceholder = changeRequset.placeholderForCreatedAssetCollection // 用占位对象引用新创建的相册.
 }, completionHandler: { success, error in
     guard success else {
@@ -342,7 +342,7 @@ PHPhotoLibrary.sharedPhotoLibrary().performChanges({
     dispatch_async(dispatch_get_main_queue()) { // 闭包会在任意线程调用.
     	// 使用占位对象的 localIdentifier 获取创建好的对应相册.
     	let collections = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers(
-    		[assetPlaceholder.localIdentifier], options: nil)
+    	[assetPlaceholder.localIdentifier], options: nil)
     	// 更新 UI...
     }
 })
@@ -353,17 +353,17 @@ PHPhotoLibrary.sharedPhotoLibrary().performChanges({
 ```swift
 var assetPlaceholder: PHObjectPlaceholder!
 PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-	// 利用一张图片创建 PHAssetChangeRequest.
+    // 利用一张图片创建 PHAssetChangeRequest.
     let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(anImage)
     // 获取该请求的占位对象.
     assetPlaceholder = createAssetRequest.placeholderForCreatedAsset
     // 针对一个相册创建 PHAssetCollectionChangeRequest.
-	let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: anAlbum)!
-	// 通过占位对象添加到相册.
-	albumChangeRequest.addAssets([assetPlaceholder])
+    let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: anAlbum)!
+    // 通过占位对象添加到相册.
+    albumChangeRequest.addAssets([assetPlaceholder])
 }, completionHandler: { _ in
-	// 完成后可根据占位对象的 localIdentifier 获取到刚刚添加的 PHAsset 对象,此处即是 fetchResult[0].
-	let fetchResult = PHAsset.fetchAssetsWithLocalIdentifiers([assetPlaceholder.localIdentifier], options: nil)
+    // 完成后可根据占位对象的 localIdentifier 获取到刚刚添加的 PHAsset 对象,此处即是 fetchResult[0].
+    let fetchResult = PHAsset.fetchAssetsWithLocalIdentifiers([assetPlaceholder.localIdentifier], options: nil)
 })
 ```
 
@@ -421,7 +421,7 @@ public func requestContentEditingInputWithOptions(options: PHContentEditingInput
 ```swift
 let options = PHContentEditingInputRequestOptions()
 options.canHandleAdjustmentData = {
-	$0.formatIdentifier == "com.cjyh.xxx" && $0.formatVersion == "1.0"
+    $0.formatIdentifier == "com.cjyh.xxx" && $0.formatVersion == "1.0"
 }
 ```
 
@@ -445,9 +445,9 @@ options.canHandleAdjustmentData = {
 // 用 PHAsset 对象创建请求.
 anAsset.requestContentEditingInputWithOptions(nil) { input, _ in
 
-	/*	用于记录此次编辑信息的对象,主要为了之后能识别此次编辑情况,从而恢复操作之类的.
-		一般会使用应用标识,版本号,以及一个字典之类的对象的二进制数据.
-		例如对图像进行了滤镜处理后,可用字典记录滤镜处理的各项参数设置.  */
+    /*	用于记录此次编辑信息的对象,主要为了之后能识别此次编辑情况,从而恢复操作之类的.
+        一般会使用应用标识,版本号,以及一个字典之类的对象的二进制数据.
+        例如对图像进行了滤镜处理后,可用字典记录滤镜处理的各项参数设置.  */
     let adjustmentData = PHAdjustmentData(formatIdentifier: "com.cjyh.xxx", formatVersion: "1.0", data: aData)
     
     // 利用 PHContentEditingInput 对象创建 PHContentEditingOutput 对象.
@@ -457,7 +457,7 @@ anAsset.requestContentEditingInputWithOptions(nil) { input, _ in
     // 将编辑后的图像序列化为二进制数据,写入 PHContentEditingOutput 对象的 renderedContentURL 属性指定的 URL.
     UIImageJPEGRepresentation(anImage, 1.0)!.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
 
-	// 提交更改.
+    // 提交更改.
     PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
         let request = PHAssetChangeRequest(forAsset: stitch)
         request.contentEditingOutput = contentEditingOutput
@@ -479,9 +479,9 @@ PHPhotoLibrary.sharedPhotoLibrary().unregisterChangeObserver(self) // 注销改�
 
 ```swift
 func photoLibraryDidChange(changeInstance: PHChange) {
-	dispatch_async(dispatch_get_main_queue()) {
-		// 注意，此方法会在任意线程调用.
-	}
+    dispatch_async(dispatch_get_main_queue()) {
+        // 注意，此方法会在任意线程调用.
+    }
 }
 ```
 
