@@ -490,13 +490,13 @@ func photoLibraryDidChange(changeInstance: PHChange) {
 `PHChange`提供了两个实例方法：
 
 ```swift
-/*	若无任何改变，此方法会返回 nil。
-	此方法只能体现 PHObject 对象自身的改变，例如元数据、标题之类的改变，
-	无法反映出 PHAssetCollection 或 PHCollectionList 这种集合模型中元素数量、顺序以及元素本身的变化。*/
+/* 若无任何改变，此方法会返回 nil。
+   此方法只能体现 PHObject 对象自身的改变，例如元数据、标题之类的改变，
+   无法反映出 PHAssetCollection 或 PHCollectionList 这种集合模型中元素数量、顺序以及元素本身的变化。*/
 public func changeDetailsForObject(object: PHObject) -> PHObjectChangeDetails?
 
-/*	若无任何改变，此方法会返回 nil。
-	此方法只能体现 PHFetchResult 对象中元素数量、顺序的变化，无法反映出元素本身的变化。*/
+/* 若无任何改变，此方法会返回 nil。
+   此方法只能体现 PHFetchResult 对象中元素数量、顺序的变化，无法反映出元素本身的变化。*/
 public func changeDetailsForFetchResult(object: PHFetchResult) -> PHFetchResultChangeDetails?
 ```
 
