@@ -3,15 +3,15 @@
 在 iOS 8，开发者迎来了全新的`Photos`框架，它提供了与用户照片库交互的所有功能，用于取代`AssetsLibrary`框架，后者也在 iOS 9 正式弃用了。
 
 - [Photo 框架的主要功能](#overview)
-- [概览：获取图像资源模型与加载图像内容](#Fetching objects and loading content)
-- [概览：修改图像资源模型与编辑图像内容](#Requesting changes and editing content)
-- [概览：监听改变](#Observing changes)
+- [概览：获取图像资源模型与加载图像内容](#Fetching_objects_and_loading_content)
+- [概览：修改图像资源模型与编辑图像内容](#Requesting_changes_and_editing_content)
+- [概览：监听改变](#Observing_changes)
 - [获取相册权限](#requestAuthorization)
-- [获取图像资源模型](#Fetching objects)
-- [加载图像资源内容](#Loading content)
-- [修改图像资源模型](#changes objects)
-- [修改图像资源内容](#editing content)
-- [监听改变](#observing changes)
+- [获取图像资源模型](#Fetching_objects)
+- [加载图像资源内容](#Loading_content)
+- [修改图像资源模型](#changes_objects)
+- [修改图像资源内容](#editing_content)
+- [监听改变](#observing_changes)
 
 <a name="overview"></a>
 ## Photo 框架的主要功能
@@ -23,7 +23,7 @@
 - 监听改变：可以注册通知，当照片库发生变化时，会得到通知，从而更新界面。无论改变是由自己的应用还是其他应用造成的。
 - 使用系统相册的高级功能：可以访问系统相册中的所有东西，包括智能专辑，时刻，iCloud 照片流，并能识别 burst shots，全景图像，和慢动作视频。
 
-<a name="Fetching objects and loading content"></a>
+<a name="Fetching_objects_and_loading_content"></a>
 ## 概览：获取图像资源模型与加载图像内容
 
 下面这些类可用于获取图像资源模型和加载图像资源内容：
@@ -60,7 +60,7 @@
 
 可以通过`PHImageRequestOptions`和`PHVideoRequestOptions`对象来设置加载图像时的高级设定，例如是否同步执行、图像版本、图像质量、缩放模式、裁剪区域、是否加载 iCloud 端数据，甚至还可以传入闭包来监听下载进度。
 
-<a name="Requesting changes and editing content"></a>
+<a name="Requesting_changes_and_editing_content"></a>
 ## 概览：修改图像资源模型与编辑图像内容
 
 下面这些类可用于改变照片库和编辑图像：
@@ -89,7 +89,7 @@
 
 该对象表示对图像进行编辑的记录数据。例如，使用其`formatIdentifier`属性记录应用标识，如“com.example.myApp”；使用其`formatVersion`属性记录此次编辑的版本号，如“1.0”；使用其`data`参数记录此次编辑的一些参数信息，例如通过将各种滤镜参数信息保存为一个字典赋值给该属性。在编辑图像时，可以通过检索`PHContentEditingInput`对象的`adjustmentData`属性来判断应用程序是否可以重现该图像上次的编辑状态，如果可以支持，那么用户就可以恢复或者修改上次的编辑状态。
 
-<a name="Observing changes"></a>
+<a name="Observing_changes"></a>
 ## 概览：监听改变
 
 下面这些类提供了照片库的改变详情：
@@ -137,7 +137,7 @@ UIApplication.sharedApplication().openURL(
 	NSURL(string: UIApplicationOpenSettingsURLString)!)
 ```
 
-<a name="Fetching objects"></a>
+<a name="Fetching_objects"></a>
 ## 获取图像资源模型
 
 #### 获取用户设备全部图片资源
@@ -186,7 +186,7 @@ let favoritesAlbum = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum
 
 使用`estimatedAssetCount`属性可提前获取相册中图像资源的估计数量，该值可能是`NSNotFound`，想获取确切数量可以通过` fetchAssetsInAssetCollection(_:options:)`方法获取全部模型然后查看返回结果的`count`属性。
                         
-<a name="Loading content"></a>
+<a name="Loading_content"></a>
 ## 加载图像资源内容
 
 如前所述，加载图像资源内容需通过`PHImageManager`或者其子类另行加载。
@@ -324,7 +324,7 @@ public func stopCachingImagesForAllAssets()
 
 该类还有个`allowsCachingHighQualityImages`属性，默认为`true`。缓存高质量的图片也意味着更高的性能耗费，根据官方文档的建议，类似使用 collection view 展示图片缩略图这种情况，应该关闭此属性，提升性能。
 
-<a name="changes objects"></a>
+<a name="changes_objects"></a>
 ## 修改图像资源模型
 
 #### 创建相册
@@ -395,7 +395,7 @@ public enum PHAssetEditOperation : Int {
 }
 ```
 
-<a name="editing content"></a>
+<a name="editing_content"></a>
 ## 修改图像资源内容
 
 可使用`PHAsset`对象的如下方法。调用此方法时，`Photo`框架会加载图像内容，加载完成会调用`completionHandler` 闭包。
@@ -465,7 +465,7 @@ anAsset.requestContentEditingInputWithOptions(nil) { input, _ in
 }
 ```
 
-<a name="observing changes"></a>
+<a name="observing_changes"></a>
 ## 监听改变
 
 可以通过`PHPhotoLibrary`注册通知监听照片库的变化，无论是应用内造成的改变还是其他应用造成的改变，都会得到通知。
