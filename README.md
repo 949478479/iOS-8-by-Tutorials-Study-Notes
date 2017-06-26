@@ -5,7 +5,7 @@ iOS 8 推出了`WKWebView`，用于取代备受诟病的`UIWebView`。
 这个新类的很多方法都与`UIWebView`的方法非常相似，用法基本相同，而且很多属性都支持 KVO。
 
 - [新增功能](#新增功能)
-- [注入 javascript 代码](#javascript injection)
+- [注入 javascript 代码](#javascript_injection)
 - [原生代码与 javascript 代码通信](#communication)
 
 ## 新增功能
@@ -102,7 +102,7 @@ public var requiresUserActionForMediaPlayback: Bool
 public var userContentController: WKUserContentController
 ```
 
-<a name="javascript injection"></a>
+<a name="javascript_injection"></a>
 ## 注入 javascript 代码
 
 #### WKUserContentController
@@ -182,9 +182,8 @@ let webView = WKWebView(frame: CGRect(), configuration: configuration)
 
 ```javascript
 <script>
-	function sayHello()
-	{
-		webkit.messageHandlers.sayHello.postMessage("Hello!~");
+	function sayHello() {
+        webkit.messageHandlers.sayHello.postMessage("Hello!~");
 	}
 </script>
 ```
@@ -193,8 +192,8 @@ let webView = WKWebView(frame: CGRect(), configuration: configuration)
 
 ```swift
 func userContentController(userContentController: WKUserContentController,
-	didReceiveScriptMessage message: WKScriptMessage) {
-	print("message: \(message.body)") // 打印 message: Hello!~
+    didReceiveScriptMessage message: WKScriptMessage) {
+    print("message: \(message.body)") // 打印 message: Hello!~
 }
 ```
 
